@@ -39,10 +39,6 @@ const userSchema = {
     type: String,
     required: true,
   },
-  displayPicture: {
-    type: String,
-    default:''
-  },
   bio: {
     type: String,
     default: "",
