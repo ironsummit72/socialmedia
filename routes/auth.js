@@ -35,7 +35,7 @@ if(password===cpassword)
   res.send('successfully registered');
 }
 })
-router.post('/login',passport.authenticate('local',{successRedirect:'/profile',failureRedirect:'/register'}))
+router.post('/login',passport.authenticate('local',{successRedirect:'/',failureRedirect:'/login'}))
 
 
 
