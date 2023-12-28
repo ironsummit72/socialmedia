@@ -9,12 +9,12 @@ router.get('/',isloggedIn,async function(req, res, next) {
   const userData=await userModel.findOne({username});
   if(userData!==null)
   {
-    const {firstname,lastname}=userData
+    const {firstname,lastname,displaypicture}=userData
     let ownProfile=false;
     if(username===req.user.username){
       ownProfile=true
   }
-    res.render('profile',{username,firstname,lastname,ownprofile:ownProfile})
+    res.render('profile',{username,firstname,lastname,ownprofile:ownProfile,displaypicture})
   }else{
     res.render('nouser',{error:"user does not exist"})
   }
@@ -24,12 +24,12 @@ router.get('/profile/:username',isloggedIn,async function(req, res, next) {
   const {username}=req.params
   let userData=await userModel.findOne({username});
   if(userData!==null){
-    const {firstname,lastname}=userData
+    const {firstname,lastname,displaypicture}=userData
     let ownProfile=false;
     if(username===req.user.username){
         ownProfile=true
     }
-    res.render('profile', { username,firstname,lastname,ownprofile:ownProfile})
+    res.render('profile', { username,firstname,lastname,ownprofile:ownProfile,displaypicture})
   }else{
     res.render('nouser',{error:"user does not exist"})
   }
