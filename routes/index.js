@@ -1,13 +1,40 @@
 let express = require('express');
 let router = express.Router();
+const userModel=require('../db/models/user')
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+
+router.get('/',isloggedIn,async function(req, res, next) {
+  const {username}=req.user
+  const userData=await userModel.findOne({username});
+  if(userData!==null)
+  {
+    const {firstname,lastname}=userData
+    let ownProfile=false;
+    if(username===req.user.username){
+      ownProfile=true
+  }
+    res.render('profile',{username,firstname,lastname,ownprofile:ownProfile})
+  }else{
+    res.render('nouser',{error:"user does not exist"})
+  }
+ 
 });
-router.get('/profile',isloggedIn, function(req, res, next) {
-  res.render('profile', { username:req.user.username});
-});
+router.get('/profile/:username',isloggedIn,async function(req, res, next) {
+  const {username}=req.params
+  let userData=await userModel.findOne({username});
+  if(userData!==null){
+    const {firstname,lastname}=userData
+    let ownProfile=false;
+    if(username===req.user.username){
+        ownProfile=true
+    }
+    res.render('profile', { username,firstname,lastname,ownprofile:ownProfile})
+  }else{
+    res.render('nouser',{error:"user does not exist"})
+  }
+
+})
 
 function isloggedIn(req,res,next) {
   if(req.user) {
