@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProfilePicture and coverphoto</title>
+    <link rel="stylesheet" href="/stylesheets/uploadprofile.css">
+</head>
+<body>
+    <form action="/upload/dp" method="post" enctype="multipart/form-data">
+        <div class='lol'>
+            <img src="" alt="">
+            <input type="file" accept='image/*' name="avatar" onchange="showImage()">
+            <input type="submit" value="upload">
+          </div>
+      </form
+</body>
+<script>
+    const imageUploader = document.querySelector("input");
+const imagePreview = document.querySelector("img");
+
+function showImage() {
+  let reader = new FileReader();
+ reader.readAsDataURL(imageUploader.files[0]);
+  reader.onload = function(e) {
+    imagePreview.classList.add("show");
+    imagePreview.src = e.target.result;
+  };
+}
+
+</script>
+</html>
