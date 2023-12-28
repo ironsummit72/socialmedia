@@ -19,6 +19,22 @@ const userSchema = {
     required: true,
     unique: true,
   },
+  displaypicture:{
+    type: String,
+    default: ''
+  },
+  coverpicture:{
+    type:String,
+    default: ''
+  },
+  followers:{
+    type:Array,
+    default:[]
+  },
+  following:{
+    type:Array,
+    default:[]
+  },
   password: {
     type: String,
     required: true,
