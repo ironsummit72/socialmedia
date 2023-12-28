@@ -13,6 +13,7 @@ const userModel=require('./db/models/user');
 let indexRouter = require('./routes/index');
 let usersRouter = require('./routes/users');
 let authRouter = require('./routes/auth');
+let uploadRouter = require('./routes/upload');
 const { verifyPassword } = require('./utils/hashgen');
 const { log } = require('util');
 
@@ -70,6 +71,7 @@ passport.use(new LocalStrategy(async function(username,password,done) {
 app.use('/', indexRouter);
 app.use('/', authRouter);
 app.use('/users', usersRouter);
+app.use('/upload', uploadRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
