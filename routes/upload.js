@@ -5,22 +5,38 @@ const multer = require('multer')
 const fs = require('fs')
 router.use(isloggedIn)
 
-const dir = './uploads'
-// create new directory
+const path = require('path')
+const baseDir = './uploads'
+const subdirectories = [
+	'displaypicture',
+	'coverpicture',
+	'posts',
+	'posts/images',
+	'posts/videos',
+]
+
 try {
-	// check if directory already exists
-	if (!fs.existsSync(dir)) {
-		fs.mkdirSync(dir)
-		console.log(' uploads Directory is created.')
+	// Check if the base directory already exists
+	if (!fs.existsSync(baseDir)) {
+		fs.mkdirSync(baseDir)
+		console.log(`${baseDir} directory is created.`)
 	} else {
 		console.log('Directory already exists.')
-		if (!fs.existsSync('./uploads/displaypicture')) {
-			fs.mkdirSync('./uploads/displaypicture')
-			fs.mkdirSync('./uploads/coverpicture')
-		}
 	}
+
+	// Create subdirectories
+	subdirectories.forEach((subdir) => {
+		const fullPath = path.join(baseDir, subdir)
+
+		if (!fs.existsSync(fullPath)) {
+			fs.mkdirSync(fullPath)
+			console.log(`${fullPath} directory is created.`)
+		} else {
+			console.log(`${fullPath} directory already exists.`)
+		}
+	})
 } catch (err) {
-	console.log(err)
+	console.error(err)
 }
 
 const storage = multer.diskStorage({
