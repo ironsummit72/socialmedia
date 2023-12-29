@@ -302,10 +302,7 @@ main{
 	padding:5px 25px;
 }
 
-.follow{
-	background:#0453e8;
-	color:#fff;
-}
+
 .website{
 	border:1px solid rgb(0, 115, 177);
 	color:rgb(0, 115, 177);
@@ -401,20 +398,8 @@ a.active::after{
   display: inline-block;
   font-size: 16px;
 }
-.feed-header-left  .feed-followers{
-  font-size: 12px;
-  width:90px;
-  height: 30px;
-  position: relative;
-  top:-20px;
-  left:70px;
-}
-.feed-header-right a{
-  font-weight: bold;
-  text-decoration: none;
-  color:#007bb5;
-  padding:0.5em 1em;
-}
+
+
 .fa-ellipsis-h{
   color:#4c4c4c;
 }
