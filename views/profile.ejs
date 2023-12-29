@@ -1,12 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title><%=username%></title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Profile</title>
+    <link rel="stylesheet" href="/stylesheets/profile.css">
 </head>
 <body>
-    <h1><%=firstname%> <%=lastname%> <%=ownprofile%>   <%=displaypicture%></h1>
-    <img src="<%=displaypicture%>" alt="">
+	<header>
+		<%- include('partials/navbar'); -%>
+		<main>
+			<%- include('partials/banner'); -%>
+		
+    			
+    	
+	</header>
+
 </body>
 </html>
