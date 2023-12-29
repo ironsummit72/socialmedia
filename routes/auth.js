@@ -20,11 +20,20 @@ passport.deserializeUser(function (user, cb) {
 
 /* GET ROUTES ----------------------------------------------. */
 router.get('/login', function (req, res) {
-	res.render('login')
+	res.render('login',{error:req.flash('error')})
 })
 
 router.get('/register', function (req, res) {
 	res.render('register')
+})
+
+router.post('/logout', function (req, res, next) { 
+	req.logout(function (err) {
+		if (err) {
+			return next(err)
+		}
+		res.redirect('/')
+	})
 })
 
 router.post('/register', async function (req, res) {
@@ -41,12 +50,6 @@ router.post('/register', async function (req, res) {
 		res.send('successfully registered')
 	}
 })
-router.post(
-	'/login',
-	passport.authenticate('local', {
-		successRedirect: '/',
-		failureRedirect: '/login',
-	})
-)
+router.post('/login',passport.authenticate('local', {successRedirect: '/',failureRedirect: '/login',failureFlash:true}))
 
 module.exports = router
