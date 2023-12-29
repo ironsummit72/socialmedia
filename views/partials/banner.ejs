@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>banner</title>
+</head>
+<body>
+    <div class="flex flex-col border shadow-md w-full h-[65vh] ">
+        <img class="bg-cover bg-no-repeat object-cover object-[top] bg-center h-full" src="<%=coverpicture%>"></img>
+        <img src="<%=displaypicture%>" alt="" class="profile w-64 h-64 absolute top-[35rem]  left-[11rem] object-fill rounded-full z-10">
+        <div class="  w-full h-[35.5vh] p-14 relative right-10  bottom-10 flex flex-col justify-between  ">
+            <div class="title flex flex-col justify-between h-20">
+                <h1 class="font-bold text-2xl relative left-20 "><%=firstname%>  <%=lastname%></h1>
+                <span class="relative left-20 font-bold text-red-500 "><%=followers.length%> followers <%=following.length%> following</span>
+            </div>
+            <div class="discription relative left-56 h-24 flex flex-col justify-around ">
+                <p class="text-black font-bold ">7 time world champion formula one</p>
+                <div>
+                    <a class=" bg-[#0453e8] text-white p-10 rounded-md" href="#">+ Follow</a>
+                    <a class= "bg-[#0453e8] text-white rounded-md" href="#">Message</a>
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
