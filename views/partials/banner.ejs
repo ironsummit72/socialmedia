@@ -18,16 +18,18 @@
                 <p class="text-black font-bold "><%=bio%></p>
                 <div class="h-14 relative top-5 flex">
                     <% if(ownprofile){%>
-                        <a class=" bg-[#0453e8] text-white flex justify-center items-center   rounded-full" href="/dp">+ EditAvatar</a>
+                        <a class=" bg-[#0453e8] text-white flex justify-center items-center   rounded-full" href="/dp"> EditAvatar</a>
+                        <a class= "bg-[#0453e8] text-white flex justify-center items-center rounded-full" href="/create/post">Create Post</a>
                         <a class= "bg-[#0453e8] text-white flex justify-center items-center rounded-full" href="/cover">Edit Cover and Bio</a>
                     <%} else{%>
-                        <a class=" bg-[#0453e8] text-white flex justify-center items-center p-10 rounded-full" href="#">+ Follow</a>
+                        <a class=" bg-[#0453e8] text-white flex justify-center items-center p-10 rounded-full" href="#">Follow</a>
                         <a class= "bg-[#0453e8] text-white flex justify-center items-center rounded-full" href="#">Message</a>
                  <%   }  %>
                   
                   
                 </div>
             </div>
+            <%- include('./profilenav'); -%>
         </div>
     </div>
 </body>
