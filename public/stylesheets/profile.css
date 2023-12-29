@@ -1,0 +1,518 @@
+*{
+	box-sizing: border-box;
+	font-size-adjust: 0.5;
+}
+body{
+	padding: 0;
+	margin:0;
+	background:rgb(245, 245, 245);
+  overflow-x: hidden;
+}
+
+nav{
+	width:100%;
+	height: 60px;
+	background: rgb(40, 62, 74);
+	display: flex;
+	justify-content: center;
+  position: fixed;
+  top:0;
+  z-index: 100
+}
+
+.navbar{
+	width:80%;
+	height: 60px;
+	/*border:1px solid #fff;*/
+	display: flex;
+	justify-content: space-between;
+}
+
+@media screen and (max-width: 999px){
+	.navbar{
+		width:90%;
+	}
+  main{
+  width:89%;
+  }
+}
+
+.nav-left{
+	width:25%;
+	height: inherit;
+	display: flex;
+	align-items: center;
+	position: relative;
+}
+
+.logo .fa{
+	font-size: 25px;
+	border-radius: 5px;
+	margin-left: 1%;
+}
+.nav-right{
+	width:65%;
+	height: inherit;
+	/*border:1px solid #fff;*/
+}
+
+.fab {
+  padding: 5px 1px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  font-size: 22px;
+}
+
+.fa-linkedin-in {
+  background: #007bb5;
+  color: white;
+  border-radius: 3px;
+}
+
+input{
+	width:80%;
+	padding:1px 25px;
+	height: 30px;
+	background: #e1e9ee;
+	border:none;
+	position: absolute;
+	left: 40px;
+	border-radius: 2px;
+}
+
+.fa-search{
+	position: absolute;
+	left: 35px;
+	z-index: 1;
+	color:#949494
+}
+
+.nav-right-left{
+	text-align: right;
+	/*border:1px solid #fff;*/
+}
+.nav-right-left a{
+	text-decoration: none;
+	color:#fff;
+	margin:0px;	
+}
+.nav-right-left .fa{
+	font-size: 22px;
+	color:transparent;
+	 -webkit-text-stroke-width: 1px;
+   -webkit-text-stroke-color: white;
+   position: relative;
+   top:10px;
+   
+  }
+  .nav-right-left .fa:hover{
+  	color:#fff;
+  }
+  .profile-pic{
+  	width:25px;
+  	height: 25px;
+  	border-radius: 50%;
+  	/*border:1px solid #fff;*/
+  	background-image:url("https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60");
+  	background-size: 100% 110%;
+  	display: inline-block;
+  	position: relative;
+  	top:15px;
+  	-webkit-text-stroke-width: 1px;
+   -webkit-text-stroke-color: white;
+  }
+
+@media screen and (min-width: 1000px){
+	.nav-right-left .fa{
+	
+   top:2px;
+   
+  }
+  main{
+    width:78%;
+  }
+  .profile-pic{
+  	
+  	top:5px;
+  	
+  }
+	.nav-right-left a{
+		margin:25px;	
+}
+  .fa-home:after{
+  	content: "Home";
+  	position:absolute;
+  	top:27px;
+  	left:-1px;
+  	color:#fff;
+  	font-weight: normal;
+  	font-size: 14px;
+  	-webkit-text-stroke-width: 0.2px;
+
+  }
+  .fa-home:hover::after{
+  	-webkit-text-stroke-width: 1px;
+  }
+
+
+  .fa-user-friends:after{
+  	content: "My Network";
+  	position:absolute;
+  	top:27px;
+  	left:-35px;
+  	color:#fff;
+  	font-weight: normal;
+  	font-size: 13px;
+  	width:100px;
+  	-webkit-text-stroke-width: .2px;
+  }
+  .fa-user-friends:hover::after{
+  	-webkit-text-stroke-width: 1px;
+  }
+  .fa-briefcase:after{
+  	content: "Jobs";
+  	position:absolute;
+  	top:27px;
+  	left:2px;
+  	color:#fff;
+  	font-weight: normal;
+  	font-size: 14px;
+  	-webkit-text-stroke-width: .2px;
+  }
+  .fa-briefcase:hover::after{
+  	-webkit-text-stroke-width: 1px;
+  }
+  .fa-comment-alt:after{
+  	content: "Messaging";
+  	position:absolute;
+  	top:28px;
+  	left:-14px;
+  	color:#fff;
+  	font-weight: normal;
+  	font-size: 14px;
+  	-webkit-text-stroke-width: .2px;
+  }
+  .fa-comment-alt:hover::after{
+  	-webkit-text-stroke-width: 1px;
+  }
+  .fa-bell:after{
+  	content: "Notification";
+  	position:absolute;
+  	top:28px;
+  	left:-14px;
+  	color:#fff;
+  	font-weight: normal;
+  	font-size: 14px;
+  	-webkit-text-stroke-width: .2px;
+  }
+  .fa-bell:hover::after{
+  	-webkit-text-stroke-width: 1px;
+  }
+  .profile-pic:after{
+  	content: "Me";
+  	position:absolute;
+  	top:27px;
+  	left:3px;
+  	color:#fff;
+  	font-weight: normal;
+  	font-size: 14px;
+  	-webkit-text-stroke-width: .2px;
+  }
+  .profile-pic:hover::after{
+  	-webkit-text-stroke-width: 1px;
+  }
+
+}
+
+
+main{
+	height: 100vh;
+	margin: 100px auto;
+	
+}
+.banner{
+	width:100%;
+	height: 55vh;
+	display: flex;
+	flex-direction: column;
+	border:0.5px solid #ccc;
+	box-shadow: 1px 1px 5px #ccc;
+}
+
+.banner >div{
+	width:100%;
+	height: 27.5vh;
+	position: relative;
+}
+
+.banner-image{
+	background:url("https://static-exp1.licdn.com/sc/h/5qi38njir9vsm46ync2qjvrrs");
+	background-size: cover;
+	background-position: center;
+
+}
+.banner-image:after{
+	width:10vw;
+	height: 20vh;
+	position: absolute;
+	content:"";
+	top:110px;
+	left:50px;
+	border:1px solid #fff;
+	background:#fff;
+	background-image:url("https://media-exp1.licdn.com/dms/image/C4D0BAQHXM-hF52jn8Q/company-logo_200_200/0?e=1608768000&v=beta&t=PInn5Zo4QAUtBPzeN3Z_7Z4swfVFf6TDQdt33kNNpdU");
+	background-size: 90% 90%;
+	background-position: center;
+	background-repeat: no-repeat;
+	z-index: 1;
+	border:0.5px solid #ccc;
+}
+.banner-info{
+	background:#fff;
+}
+
+
+.title{
+	position: 70%;
+	position: relative;
+	left:200px;
+	top:-10px;
+}
+.title h1{
+	margin-top:10px;
+	margin-bottom: 0px;
+}
+.title span{
+	font-size: 14px;
+	color:#777;;
+}
+.discription{
+	padding-left: 50px;
+	font-size: 17px;
+	font-weight: bold;
+}
+
+.discription a{
+	text-decoration: none;
+	margin:5px;
+	font-weight: bolder;
+	font-size: 18px;
+	padding:5px 25px;
+}
+
+.follow{
+	background:#0453e8;
+	color:#fff;
+}
+.website{
+	border:1px solid rgb(0, 115, 177);
+	color:rgb(0, 115, 177);
+	padding:5px 20px;
+}
+
+.employee{
+	float: right;
+	color:rgb(0, 115, 177);
+}
+
+.menu{
+    grid-area: mn;
+    background:#fff;
+    border:1px solid #ccc;
+}
+.menu a{
+  display: block;
+  text-decoration: none;
+  border-bottom: 1px solid #ccc;
+  padding:1.1em;
+  color:#4c4c4c;
+  font-weight: bold;
+}
+
+a.active{
+  color:#007bb5;
+  position: relative;
+}
+a.active::after{
+  position: absolute;
+  content: "";
+  top:0;
+  left:0;
+  width:0.5em;
+  height: 3.4em;
+  background:#007bb5;
+}
+.about {
+    grid-area: ab;
+    background:#fff;
+    border:1px solid #ccc;
+}
+.about-discription {
+  padding:0.5em 1em;
+}
+.about-discription h3{
+    margin:0;
+    padding:0;
+}
+
+.about-discription p{
+  color:#4c4c4c;
+}
+.see-all{
+  border-top: 1px solid #ccc;
+  text-align: center;
+  padding: 1em;
+}
+.see-all a{
+  text-decoration: none;
+  color:#007bb5;
+  font-weight: bold;
+}
+.feed{
+    grid-area: fd;
+    background:#fff;
+    border:1px solid #ccc;
+}
+.feed-header{
+  width: 100%;
+  height: 80px;
+  border-bottom:1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.feed-header-left a{
+    width:50px;
+    height: 50px;
+    border-radius: 50%;
+    background-image:url("https://media-exp1.licdn.com/dms/image/C4D0BAQHXM-hF52jn8Q/company-logo_200_200/0?e=1608768000&v=beta&t=PInn5Zo4QAUtBPzeN3Z_7Z4swfVFf6TDQdt33kNNpdU");
+    background-size: 100% 110%;
+    display: inline-block;
+    position: relative;
+    top:25px;
+    left:15px;
+}
+.feed-header-left h3{
+  position: relative;
+  top:-4px;
+  left:15px;
+  display: inline-block;
+  font-size: 16px;
+}
+.feed-header-left  .feed-followers{
+  font-size: 12px;
+  width:90px;
+  height: 30px;
+  position: relative;
+  top:-20px;
+  left:70px;
+}
+.feed-header-right a{
+  font-weight: bold;
+  text-decoration: none;
+  color:#007bb5;
+  padding:0.5em 1em;
+}
+.fa-ellipsis-h{
+  color:#4c4c4c;
+}
+.feed-header-dis{
+  padding:0.5em 1em;
+}
+.feed-image-post{
+  width:100%;
+  height: 300px;
+  background-image:url("https://media-exp1.licdn.com/dms/image/C4D0BAQHXM-hF52jn8Q/company-logo_200_200/0?e=1608768000&v=beta&t=PInn5Zo4QAUtBPzeN3Z_7Z4swfVFf6TDQdt33kNNpdU");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.feed-post-heading{
+  width:100%;
+  height: 50px;
+  background:#f5f5f5;
+  padding:0.5em 1em;
+}
+.feed-post-heading h3{
+  font-size: 16px;
+  margin:0;
+  padding: 0;
+}
+.feed-post-heading p{
+  margin:0;
+  font-size: 12px;
+}
+.feed-post-heading a{
+  text-decoration: none;
+}
+.feed .stats{
+    padding:0 1em;
+}
+.fa-thumbs-up{
+  color:#fff;
+  background:#007bb5;
+  border-radius: 50%;
+  width:22px;
+  height: 22px;
+  font-size: 2px;
+  padding:2px;
+}
+.stats span{
+  font-size: 12px;
+}
+hr{
+  margin:0;
+  border:0.5px solid #dedede;
+}
+.social-btn {
+  width:100%;
+  height: 50px;
+  padding:0.5em 1em;
+}
+.social-btn a{
+  text-decoration: none;
+  color:#4c4c4c;
+  margin:2%;
+  font-size: 18px;
+}
+
+.social-btn a .fa-thumbs-up{
+  color:#4c4c4c;
+  background:transparent;
+}
+
+.ad {
+    grid-area: ad;
+    background:url("https://static-exp1.licdn.com/scds/common/u/images/promo/ads/li_evergreen_jobs_ad_300x250_v1.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+.others{
+    grid-area: oth;
+    background:#fff;
+    text-align: center;
+    padding: 0.5em;
+}
+
+
+.wrapper {
+
+    margin-top: 50px;
+    display: grid;
+    grid-gap: 1em;
+    grid-template-columns: repeat(9, 1fr);
+    grid-auto-rows: minmax(100px, auto);
+    grid-template-areas: 
+      "mn mn ab ab ab  ab   ad   ad   ad"
+      "mn mn  fd fd fd fd    ad ad ad"
+      ".  .  fd fd fd fd   oth oth  oth"
+      ".  .  fd fd fd fd   oth oth  oth"
+      ".  .  fd fd fd fd   oth oth  oth"
+      ".  .  fd fd fd fd   .    .   ."
+      ".  .   . .   .  .    .   .   ."
+
+}
