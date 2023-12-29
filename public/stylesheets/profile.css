@@ -9,16 +9,7 @@ body{
   overflow-x: hidden;
 }
 
-nav{
-	width:100%;
-	height: 60px;
-	background: rgb(40, 62, 74);
-	display: flex;
-	justify-content: center;
-  position: fixed;
-  top:0;
-  z-index: 100
-}
+
 
 .navbar{
 	width:80%;
@@ -291,7 +282,7 @@ main{
 .discription{
 	padding-left: 50px;
 	font-size: 17px;
-	font-weight: bold;
+
 }
 
 .discription a{
