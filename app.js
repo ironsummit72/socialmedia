@@ -13,6 +13,7 @@ let indexRouter = require('./routes/index')
 let usersRouter = require('./routes/users')
 let authRouter = require('./routes/auth')
 let uploadRouter = require('./routes/upload')
+let profileRouter = require('./routes/profile')
 const { verifyPassword } = require('./utils/hashgen')
 
 
@@ -71,6 +72,7 @@ app.use('/', indexRouter)
 app.use('/', authRouter)
 app.use('/users', usersRouter)
 app.use('/upload', uploadRouter)
+app.use('/profile',profileRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
