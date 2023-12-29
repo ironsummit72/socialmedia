@@ -14,6 +14,7 @@ let usersRouter = require('./routes/users')
 let authRouter = require('./routes/auth')
 let uploadRouter = require('./routes/upload')
 let profileRouter = require('./routes/profile')
+let flash = require('connect-flash')
 const { verifyPassword } = require('./utils/hashgen')
 
 
@@ -48,18 +49,19 @@ app.use(
 		},
 	})
 )
+app.use(flash())
 app.use(passport.initialize())
 app.use(passport.authenticate('session'))
 passport.use(
 	new LocalStrategy(async function (username, password, done) {
 		let userData = await userModel.findOne({ username })
-		let [hash, salt] = userData.password.split('.')
 		if (userData !== null) {
+			let [hash, salt] = userData.password.split('.')
 			const isMatch = verifyPassword(password, hash, salt)
 			if (isMatch) {
 				return done(null, userData)
 			} else {
-				return done(null, false, { message: 'password not matched' })
+				return done(null, false, { message: 'Incorrect Password' })
 			}
 		} else {
 			// TODO  if user is null
