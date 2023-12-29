@@ -1,0 +1,16 @@
+{
+    "singleQuote": true,
+    "semi": false,
+    "tabWidth": 1,
+    "useTabs": true,
+    "bracketSpacing": true,
+    "bracketSameLine": true,
+    "overrides": [
+        {
+            "files": "views/**/*.ejs", 
+            "options": {
+              "printWidth": 140
+            }
+        }
+    ]
+}
