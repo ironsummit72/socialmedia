@@ -1,2 +1,4 @@
 node_modules
 /uploads
+output.css
+public/dist/
