@@ -10,7 +10,7 @@
 
     <form action="/create/post" method="post" enctype="multipart/form-data">
     <label for="media">Upload Media:</label>
-    <input type="file" id="media" name="posts" accept="image/*,video/*" multiple onchange="previewMedia()" required>
+    <input type="file" id="media" name="posts" accept="image/*,video/*" onchange="previewMedia()" required>
 
     <div id="mediaPreview"></div>
 
