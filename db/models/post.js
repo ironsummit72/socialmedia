@@ -1,14 +1,14 @@
 const mongoose = require('mongoose')
-const connection = mongoose.createConnection('mongodb://localhost:27017/socialm')
+mongoose.connect('mongodb://localhost:27017/socialm')
 
 const postSchema = new mongoose.Schema({
 	user: {
 		type: mongoose.Schema.Types.ObjectId,
-		ref: 'Users',
+		ref: 'users',
 	},
 	typeofPost: {
 		type: String,
-		default: 'type',
+		default: 'normalpost',
 	},
 	caption: {
 		type: String,
@@ -17,11 +17,10 @@ const postSchema = new mongoose.Schema({
 		type: Array,
 		default: [],
 	},
-	contents: [
-		{
-			type: String,
-		},
-	],
+	contents: {
+		type: Array,
+		default: [],
+	},
 })
-const Post = connection.model('Posts', postSchema)
-module.exports = Post
+// const Post =
+module.exports = mongoose.model('posts', postSchema)

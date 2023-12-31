@@ -1,7 +1,5 @@
 const mongoose = require('mongoose')
-const connection = mongoose.createConnection(
-	'mongodb://localhost:27017/socialm'
-)
+mongoose.connect('mongodb://localhost:27017/socialm')
 const userSchema = {
 	username: {
 		type: String,
@@ -48,9 +46,9 @@ const userSchema = {
 	posts: [
 		{
 			type: mongoose.Schema.Types.ObjectId,
-			ref: 'Posts',
+			ref: 'posts',
 		},
 	],
 }
-const User = connection.model('Users', userSchema)
-module.exports = User
+// const User =
+module.exports = mongoose.model('users', userSchema)
