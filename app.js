@@ -65,7 +65,7 @@ passport.use(
 				return done(null, false, { message: 'Incorrect Password' })
 			}
 		} else {
-			// TODO  if user is null
+
 			return done(null, false, { message: 'Incorrect Username' })
 		}
 	})
