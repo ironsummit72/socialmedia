@@ -1,0 +1,45 @@
+
+    <div class="card w-[28vw] border max-h-[95vh] h-auto shadow-2xl rounded-lg flex flex-col items-center ">
+        <div class="profile-info w-full   h-15 flex items-center">
+            <div class="profile_img relative w-[40px] h-[40px] mt-1 ml-6 rounded-full overflow-hidden mr-[12px] ">
+                <img src="<%=displaypicture%>" alt="user" class="cover cursor-pointer absolute top-0 right-0 w-full h-full object-cover object-center pointer ">
+            </div>
+            <div class="userdetails">
+                <h4 class="username text-lg font-medium "><%=firstname%> <%=lastname%></h4>
+                 <h5 class="time data text-[#777]">23h</h5>
+            </div>
+            <ul class="relative w-[25px] h-[25px] rounded flex justify-center items-center">
+                <li class="absolute top-0 right-0 w-full h-full rounded-full mt-[6px] mr-[48px] list-none text-center">
+                    <img src="/icons/global.svg"  alt="globe" class="cover absolute bottom-4 right-0 left-14 w-full h-full rounded-full mt-[-1.5px]">
+                </li>
+            </ul>
+        </div>
+        <h4 class="caption ml-10 line-clamp-2 relative top-1 w-[90%]"><%=items.caption%> </h4>
+        <% let [type,extension]=items.contents[0].mimetype.split('/') %>
+        <% if(type==='image') {%>
+            <img src="/posts/images/<%=items.contents[0].filename%>" class="w-[85%] h-auto relative top-2" alt="">
+            <%} else if(type==='video') {%>
+                <video autoplay muted class="w-[75%] h-auto relative top-2">
+                    <source  src="/posts/videos/<%=items.contents[0].filename%>" type="video/mp4">
+                </video>
+        <%}%>
+        <div class="likes_counts mb-8 relative  w-full">
+            <ul class="relative w-[20px] h-[20px] rounded flex justify-center items-center">
+                <li class="absolute top-0 right-0 w-full h-full rounded-full mt-[38px] mr-[32px] list-none text-center">
+                    <img src="/icons/like.svg"  alt="globe" class="cover absolute bottom-4 right-0 left-14 w-full h-full rounded-full mt-[-1.5px]">
+                </li>
+            </ul>
+            <h5 class="ml-12 text-[#777]"><%=items.likes.length%> likes</h5>
+        </div>
+    
+        <div class="buttons relative w-full h-12 bottom-6  p-5 flex items-center justify-around" >
+            <div class="profile_img relative w-[25px] h-[25px] mt-1 ml-6  overflow-hidden mr-[12px] ">
+                <img src="/icons/like.svg" alt="user" class="like cursor-pointer absolute top-0 right-0 w-full h-full object-cover object-center pointer ">
+            </div>
+            <div class="profile_img relative w-[25px] h-[25px] mt-1 ml-6  overflow-hidden mr-[12px] ">
+                <img src="/icons/comment.svg" alt="user" class="comments cursor-pointer absolute top-0 right-0 w-full h-full object-cover object-center pointer ">
+            </div>
+           
+        </div>
+
+    </div>
