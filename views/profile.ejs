@@ -12,10 +12,15 @@
 		<%- include('partials/navbar'); -%>
 		<main>
 			<%- include('partials/banner'); -%>
-			
 		
-    			
+			
+	
 	</header>
-
+<div class="postcontent w-full  flex items-center flex-col gap-10 relative bottom-24 ml-10 mr-20">
+	<% posts.forEach(function(item,index) { %>
+		<!-- <li><%= item.caption  %></li> -->
+		<%- include('components/card',{items:item}); -%>
+		<% }); %>
+</div>
 </body>
 </html>
