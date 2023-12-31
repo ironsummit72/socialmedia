@@ -1,6 +1,9 @@
 const express = require('express')
 const router = express.Router()
 const multer = require('multer')
+const userModel=require('../db/models/user')
+const postModel=require('../db/models/post')
+
 
 router.use(isloggedIn)
 
@@ -25,10 +28,30 @@ router.get('/post', function (req, res) {
 })
 const upload = multer({ storage: storage })
 
-router.post('/post', upload.array('posts', 6), function (req, res) {
-	console.log(req.files)
-	console.log(req.body.caption)
-	res.send('postcreated successfully')
+// _____________________________ post requests____________________
+
+
+
+
+router.post('/post', upload.array('posts', 6),async function (req, res) {
+
+
+	const {username}=req.user
+	const {caption}=req.body
+	if(!req.file)
+	{
+		let userData = await userModel.findOne({ username })
+		let postData = await postModel.create({ user: userData._id,caption,contents:req.files})
+		userData.posts.push(postData._id)
+		await userData.save()
+		// res.send('postcreated successfully')
+		res.redirect('/')
+		
+	}
+
+
+
+
 })
 
 function isloggedIn(req, res, next) {
