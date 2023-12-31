@@ -3,8 +3,13 @@
     "semi": false,
     "tabWidth": 1,
     "useTabs": true,
-    "bracketSpacing": true,
     "bracketSameLine": true,
+    "trailingComma": "all",
+    "bracketSpacing": false,
+    "arrowParens": "always",
+    "printWidth": 120,
+
+
     "overrides": [
         {
             "files": "views/**/*.ejs", 
