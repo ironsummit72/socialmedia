@@ -16,14 +16,21 @@
             </div>
             <div class="discription relative left-56 h-24 flex flex-col justify-around ">
                 <p class="text-black font-bold "><%=bio%></p>
-                <div class="h-14 relative top-5 flex">
+                <div class="h-14 relative  top-5 flex">
                     <% if(ownprofile){%>
                         <a class=" bg-[#0453e8] text-white flex justify-center items-center   rounded-full" href="/dp"> EditAvatar</a>
                         <a class= "bg-[#0453e8] text-white flex justify-center items-center rounded-full" href="/create/post">Create Post</a>
                         <a class= "bg-[#0453e8] text-white flex justify-center items-center rounded-full" href="/cover">Edit Cover and Bio</a>
                     <%} else{%>
-                        <a class=" bg-[#0453e8] text-white flex justify-center items-center p-10 rounded-full" href="#">Follow</a>
-                        <a class= "bg-[#0453e8] text-white flex justify-center items-center rounded-full" href="#">Message</a>
+                        
+
+                            <form id="follow" class="w-20 h-20   flex justify-center items-center containerbuttons" action="/follow/<%=username%>" method="POST">
+                                <input for="follow" class="bg-blue-700 text-white font-bold rounded-full" type="submit" value="follow"  />
+                            </form>
+
+                            <!-- <button id="follow" class="bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Follow</button>
+                            <button id="message" class="bg-blue-700 text-white font-bold py-2 px-4 rounded-full">message</button> -->
+
                  <%   }  %>
                   
                   
@@ -33,4 +40,5 @@
         </div>
     </div>
 </body>
+<script src="/javascripts/banner.js"></script>
 </html>
