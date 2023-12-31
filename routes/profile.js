@@ -3,18 +3,10 @@ const router = express.Router()
 const userModel = require('../db/models/user')
 
 router.get('/:username', isloggedIn, async function (req, res) {
-	const { username } = req.params
-	let userData = await userModel.findOne({ username })
+	const {username} = req.params
+	let userData = await userModel.findOne({username}).populate('posts')
 	if (userData !== null) {
-		const {
-			firstname,
-			lastname,
-			displaypicture,
-			coverpicture,
-			followers,
-			following,
-			bio,
-		} = userData
+		const {firstname, lastname, displaypicture, coverpicture, followers, following, bio, posts} = userData
 		let ownProfile = false
 		if (username === req.user.username) {
 			ownProfile = true
@@ -31,20 +23,21 @@ router.get('/:username', isloggedIn, async function (req, res) {
 			followers,
 			following,
 			bio,
+			posts,
 		})
 	} else {
-		res.render('nouser', { error: 'user does not exist' })
+		res.render('nouser', {error: 'user does not exist'})
 	}
 })
 
 router.post('/:search', (req, res) => {
-	const { search } = req.body
+	const {search} = req.body
 	res.redirect(`/profile/${search}`)
 })
 
 async function loggedInuserDetails(username) {
-	let userData = await userModel.findOne({ username })
-	const { displaypicture } = userData
+	let userData = await userModel.findOne({username})
+	const {displaypicture} = userData
 	return displaypicture
 }
 function isloggedIn(req, res, next) {
