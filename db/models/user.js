@@ -27,14 +27,18 @@ const userSchema = {
 		type: String,
 		default: '',
 	},
-	followers: {
-		type: Array,
-		default: [],
-	},
-	following: {
-		type: Array,
-		default: [],
-	},
+	followers: [
+		{
+			type: mongoose.Schema.Types.ObjectId,
+			ref: 'users',
+		},
+	],
+	following: [
+		{
+			type: mongoose.Schema.Types.ObjectId,
+			ref: 'users',
+		},
+	],
 	password: {
 		type: String,
 		required: true,
