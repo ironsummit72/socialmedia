@@ -19,12 +19,11 @@ router.post('/:username', async function (req, res) {
 		} else {
 			res.send('you are already following ' + req.params.username)
 		}
-		//res.send('followed')   //TODO: will do something later
+		
 	}
 
-	const {username} = req.params
-	console.log(username)
-	//TODO: write follow logic here
+	
+	
 })
 
 function isloggedIn(req, res, next) {
