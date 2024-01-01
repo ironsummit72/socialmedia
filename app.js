@@ -16,6 +16,7 @@ let uploadRouter = require('./routes/upload')
 let profileRouter = require('./routes/profile')
 let createRouter = require('./routes/create')
 let followRouter = require('./routes/follow')
+let followInfoRouter = require('./routes/followinfo')
 let flash = require('connect-flash')
 const { verifyPassword } = require('./utils/hashgen')
 
@@ -74,6 +75,7 @@ passport.use(
 
 app.use('/', indexRouter)
 app.use('/', authRouter)
+app.use('/', followInfoRouter)
 app.use('/users', usersRouter)
 app.use('/upload', uploadRouter)
 app.use('/profile',profileRouter)
