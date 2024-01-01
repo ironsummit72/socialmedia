@@ -9,8 +9,9 @@ router.use(isloggedIn)
 
 const storage = multer.diskStorage({
 	destination: function (req, file, cb) {
+		
+		// eslint-disable-next-line no-unused-vars
 		const [type, extension] = file.mimetype.split('/')
-		console.log(`the type is ${type} and the extension is ${extension}`)
 		if (type === 'image') {
 			cb(null, 'uploads/posts/images')
 		} else if (type === 'video') {

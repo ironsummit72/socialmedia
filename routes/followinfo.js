@@ -9,7 +9,6 @@ router.get('/followers', async function (req, res) {
 	if (req.user!==null) {
 		const {username}=req.user
 		let userData=await userModel.findOne({username}).populate('followers')
-		console.log(userData)
 		res.render('followers',{followers:userData.followers})
 		
 	}else{
@@ -21,7 +20,6 @@ router.get('/following',async function (req, res) {
 	if (req.user!==null ) {
 		const {username}=req.user
 		let userData=await userModel.findOne({username}).populate('following')
-		console.log(userData)
 		res.render('following',{following:userData.following})
 		
 	}else{
@@ -36,7 +34,6 @@ router.get('/followers/:username',async function (req, res) {
 	if (req.params.username!==null) {
 		const {username}=req.params
 		let userData=await userModel.findOne({username}).populate('followers')
-		console.log(userData)
 		res.render('followers',{followers:userData.followers})
 		
 	}else{
@@ -50,7 +47,6 @@ router.get('/following/:username',async function (req, res) {
 	if (req.params.username!==null ) {
 		const {username}=req.params
 		let userData=await userModel.findOne({username}).populate('following')
-		console.log(userData)
 		res.render('following',{following:userData.following})
 
 	}else{
