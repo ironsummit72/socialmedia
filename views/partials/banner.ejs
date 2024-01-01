@@ -34,9 +34,27 @@
                     <%} else{%>
                         
 
-                            <form id="follow" class="w-20 h-20   flex justify-center items-center containerbuttons" action="/follow/<%=username%>" method="POST">
-                                <input for="follow" class="bg-blue-700 text-white font-bold rounded-full" type="submit" value="follow"  />
-                            </form>
+
+                        <% let isFollowing=followers.some((filter)=> {
+                            return filter.username === loggedInUser;
+                            });
+                            %>
+                        
+                            <% if(isFollowing) {%>
+                                <form id="follow" class="w-20 h-20   flex justify-center items-center containerbuttons" action="/unfollow/<%=username%>" method="POST">
+                                    <input for="follow" class="bg-gray-300 cursor-pointer text-black font-bold rounded-full" type="submit" value="unfollow"  />
+                                </form>
+                            <%}else {%>
+                                <form id="follow" class="w-20 h-20   flex justify-center items-center containerbuttons" action="/follow/<%=username%>" method="POST">
+                                    <input for="follow" class="bg-blue-700 cursor-pointer text-white font-bold rounded-full" type="submit" value="follow"  />
+                                </form>
+
+                           <%}%>
+
+
+
+
+                       
 
                             <!-- <button id="follow" class="bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Follow</button>
                             <button id="message" class="bg-blue-700 text-white font-bold py-2 px-4 rounded-full">message</button> -->
