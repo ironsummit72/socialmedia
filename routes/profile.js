@@ -4,7 +4,8 @@ const userModel = require('../db/models/user')
 
 router.get('/:username', isloggedIn, async function (req, res) {
 	const {username} = req.params
-	let userData = await userModel.findOne({username}).populate('posts')
+	let userData = await userModel.findOne({username}).populate('posts').populate('followers')
+	console.log('followers',userData)
 	if (userData !== null) {
 		const {firstname, lastname, displaypicture, coverpicture, followers, following, bio, posts} = userData
 		let ownProfile = false
@@ -24,6 +25,7 @@ router.get('/:username', isloggedIn, async function (req, res) {
 			following,
 			bio,
 			posts,
+			loggedInUser:req.user.username
 		})
 	} else {
 		res.render('nouser', {error: 'user does not exist'})
@@ -34,6 +36,7 @@ router.post('/:search', (req, res) => {
 	const {search} = req.body
 	res.redirect(`/profile/${search}`)
 })
+
 
 async function loggedInuserDetails(username) {
 	let userData = await userModel.findOne({username})
