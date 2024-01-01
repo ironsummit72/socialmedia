@@ -15,7 +15,7 @@ router.post('/:username', async function (req, res) {
 			await loggedInUserData.save()
 			requestedUserData.followers.push(loggedInUserData._id)
 			await requestedUserData.save()
-			res.status(200).send('followed')
+			res.status(200).redirect(`../profile/${req.params.username}`)
 		} else {
 			res.send('you are already following ' + req.params.username)
 		}
