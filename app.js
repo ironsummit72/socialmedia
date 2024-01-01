@@ -16,6 +16,7 @@ let uploadRouter = require('./routes/upload')
 let profileRouter = require('./routes/profile')
 let createRouter = require('./routes/create')
 let followRouter = require('./routes/follow')
+let unfollowRouter = require('./routes/unfollow')
 let followInfoRouter = require('./routes/followinfo')
 let flash = require('connect-flash')
 const { verifyPassword } = require('./utils/hashgen')
@@ -81,6 +82,7 @@ app.use('/upload', uploadRouter)
 app.use('/profile',profileRouter)
 app.use('/create',createRouter)
 app.use('/follow', followRouter)
+app.use('/unfollow', unfollowRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
