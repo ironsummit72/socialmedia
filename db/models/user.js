@@ -53,6 +53,12 @@ const userSchema = {
 			ref: 'posts',
 		},
 	],
+	likedposts: [
+		{
+			type: mongoose.Schema.Types.ObjectId,
+			ref: 'posts',
+		},
+	],
 }
 // const User =
 module.exports = mongoose.model('users', userSchema)
