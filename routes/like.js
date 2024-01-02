@@ -31,10 +31,6 @@ router.post('/like/:postId', async function (req, res) {
 		console.log(' likes found')
 		res.send('you already liked this post')
 	}
-	// userData.likedposts.push(postId)
-	// await userData.save()
-	// postData.likes.push(userData._id)
-	// await postData.save()
 })
 
 function isloggedIn(req, res, next) {
