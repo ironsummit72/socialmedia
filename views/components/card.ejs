@@ -19,7 +19,7 @@
         <% if(type==='image') {%>
             <img src="/posts/images/<%=items.contents[0].filename%>" class="w-[85%] h-auto relative top-2" alt="">
             <%} else if(type==='video') {%>
-                <video autoplay muted class="w-[75%] h-auto relative top-2">
+                <video autoplay muted nodownload controls  class="w-[75%] h-auto relative top-2">
                     <source  src="/posts/videos/<%=items.contents[0].filename%>" type="video/mp4">
                 </video>
         <%}%>
@@ -29,13 +29,14 @@
                     <img src="/icons/like.svg"  alt="globe" class="cover absolute bottom-4 right-0 left-14 w-full h-full rounded-full mt-[-1.5px]">
                 </li>
             </ul>
-            <h5 class="ml-12 text-[#777]"><%=items.likes.length%> likes</h5>
+            <a href="/likes/<%=items.id%>" class="ml-12 text-[#777]"><%=items.likes.length%> likes</a>
+            <h1><%=items.likes.username%></h1>
         </div>
     
-        <div class="buttons relative w-full h-12 bottom-6  p-5 flex items-center justify-around" >
-            <div class="profile_img relative w-[25px] h-[25px] mt-1 ml-6  overflow-hidden mr-[12px] ">
-                <img src="/icons/like.svg" alt="user" class="like cursor-pointer absolute top-0 right-0 w-full h-full object-cover object-center pointer ">
-            </div>
+        <div class="buttons relative w-[120%] h-12 bottom-6  p-5 flex items-center justify-around " >
+            <form action="/like/<%=items._id%>" method="post">
+                  <input class="profile_img relative w-[25px] h-[25px] mt-1 overflow-hidden " type="image" src="/icons/like.svg" alt="user" class="like cursor-pointer absolute top-0 right-0 w-full h-full object-cover object-center pointer">
+              </form>
             <div class="profile_img relative w-[25px] h-[25px] mt-1 ml-6  overflow-hidden mr-[12px] ">
                 <img src="/icons/comment.svg" alt="user" class="comments cursor-pointer absolute top-0 right-0 w-full h-full object-cover object-center pointer ">
             </div>
