@@ -82,11 +82,11 @@ router.post('/dp', upload.single('avatar'), async function (req, res) {
 
 	let pattern = /uploads/g
 	let resultString = path.replace(pattern, '')
-	let userData = await userModel.updateOne(
+	await userModel.updateOne(
 		{ username },
 		{ $set: { displaypicture: resultString } }
 	)
-	res.send(userData)
+	res.redirect('/')
 })
 
 router.post('/cover', coverUpload.single('cover'), async function (req, res) {
@@ -102,11 +102,11 @@ router.post('/cover', coverUpload.single('cover'), async function (req, res) {
 		)
 		res.send(userData)
 	} else {
-		let userData = await userModel.updateOne(
+		await userModel.updateOne(
 			{ username },
 			{ $set: { coverpicture: resultString, bio: bio } }
 		)
-		res.send(userData)
+		res.redirect('/')
 	}
 })
 function isloggedIn(req, res, next) {
