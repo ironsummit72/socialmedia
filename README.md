@@ -4,6 +4,9 @@
 This app is a mock of social media. which have features like creating an account and uploading photos and videos. also interect with other users. this app uses passport js for authentication. 
 
 
+## Requirements 
+- 1 Mongo DB 
+- 2 Node Js 
 
 
 ## Features
