@@ -7,13 +7,19 @@
     <link rel="stylesheet" href="/stylesheets/uploadprofile.css">
 </head>
 <body>
-    <form action="/upload/dp" method="post" enctype="multipart/form-data">
-        <div class='lol'>
-            <img src="" alt="">
-            <input type="file" accept='image/*' name="avatar" onchange="showImage()">
-            <input type="submit" value="upload">
-          </div>
-        </form>
+  <form action="/upload/dp" method="post" enctype="multipart/form-data" class="image-upload-form">
+    <div class="image-preview-container">
+      <img src="" alt="Image preview" class="preview-image">
+    </div>
+    <div class="file-upload">
+      <label for="avatar" class="file-upload-label">
+        <i class="fas fa-cloud-upload-alt"></i>
+        Choose image
+      </label>
+      <input type="file" accept="image/*" name="avatar" id="avatar" class="file-upload-input" onchange="showImage()">
+    </div>
+    <button type="submit" class="upload-button">Upload</button>
+  </form>
       
 </body>
 <script>
