@@ -32,6 +32,7 @@ router.get('/', isloggedIn, async function (req, res) {
 			coverpicture,
 			bio,
 			posts,
+			loggedInUserId:req.user.id,
 		})
 	} else {
 		res.render('nouser', {error: 'user does not exist'})
