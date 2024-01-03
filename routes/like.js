@@ -15,10 +15,10 @@ router.get('/likes/:postId', async function (req, res) {
 })
 // handle post requests
 
-router.post('/like/:postId', async function (req, res) {
-	const {postId} = req.params
+router.post('/like/:postIdUser', async function (req, res) {
+	const {postIdUser} = req.params
 	const {username} = req.user
-
+	const [postId, user] = postIdUser.split('+')
 	let userData = await userModel.findOne({username})
 	let postData = await postModel.findOne({_id: postId})
 	if (!userData.likedposts.includes(postData._id) && !postData.likes.includes(userData._id)) {
@@ -26,10 +26,22 @@ router.post('/like/:postId', async function (req, res) {
 		await userData.save()
 		postData.likes.push(userData._id)
 		await postData.save()
-		res.redirect('../')
+		res.redirect('.././profile/' + user)
 	} else {
-		console.log(' likes found')
-		res.send('you already liked this post')
+		let userData = await userModel.findOne({username})
+		let postData = await postModel.findOne({_id: postId})
+
+		let newUserData=userData.likedposts.filter((likedpost)=>{
+			return likedpost.toString() !== postData._id.toString()
+		})
+		let newPostData = postData.likes.filter((likes)=>{
+			return likes.toString()!==userData._id.toString()
+		})
+		userData.likedposts=[...newUserData]
+		await userData.save()
+		postData.likes=[...newPostData]
+		await postData.save()
+		res.redirect('.././profile/' + user)
 	}
 })
 
