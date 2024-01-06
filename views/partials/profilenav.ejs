@@ -10,13 +10,19 @@
     <nav class="nav w-full shadow-sm mt-10">
         <div class="navbar w-full ">
             <ul class="w-full flex items-center justify-around  font-bold text-gray-500">
-                <li><a href="/">Posts</a></li>
-                <li><a href="/reels">Reels</a></li>
-                <li><a href="/photos">Photos</a></li>
-                <li><a href="/videos">Videos</a></li>
+                <%if(ownprofile){%>
+                    <li><a href="/">Posts</a></li>
+                    <li><a href="/reels">Reels</a></li>
+                    <li><a href="/photos">Photos</a></li>
+                    <li><a href="/videos">Videos</a></li>
+                    <%}else{%>
+                        <li><a href="/">Posts</a></li>
+                        <li><a href="/reels/profile/<%=username%>">Reels</a></li>
+                        <li><a href="/photos/profile/<%=username%>">Photos</a></li>
+                        <li><a href="/videos/profile/<%=username%>">Videos</a></li>
+                        <%}%>
             </ul>
         </div>
     </nav>
-    
 </body>
 </html>

@@ -13,5 +13,14 @@
 		<main>
 			<%- include('partials/banner'); -%>
 	</header>
+	<div class="flex justify-center">
+		<div class="postcontent grid  grid-cols-3 w-[70%] gap-4 mb-20">
+			<%let reel= posts.filter(function(item) { %>
+				<%if(item.contents[0].mimetype.split('/')[0]=='video'){%>
+					<%- include('components/reelcard',{items:item}); -%>
+					<%}%>
+					<% }); %>
+				</div>
+			</div>
 </body>
 </html>
