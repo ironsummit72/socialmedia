@@ -41,33 +41,6 @@ router.get('/', isloggedIn, async function (req, res) {
 
 
 
-router.get('/reels', isloggedIn, async function (req, res) {
-	const {username} = req.user
-	const userData = await userModel.findOne({username}).populate('posts')
-	if (userData !== null) {
-		const {firstname, lastname, displaypicture, followers, following, coverpicture, bio, posts} = userData
-		let ownProfile = false
-		if (username === req.user.username) {
-			ownProfile = true
-		}
-		const ownerpicture = await loggedInuserDetails(req.user.username)
-		res.render('reels', {
-			username,
-			firstname,
-			lastname,
-			ownprofile: ownProfile,
-			displaypicture,
-			ownerpicture,
-			followers,
-			following,
-			coverpicture,
-			bio,
-			posts,
-		})
-	} else {
-		res.render('nouser', {error: 'user does not exist'})
-	}
-})
 
 
 async function loggedInuserDetails(username) {
