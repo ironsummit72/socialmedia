@@ -19,7 +19,7 @@
         <% if(type==='image') {%>
             <img src="/posts/images/<%=items.contents[0].filename%>" class="w-[85%] h-auto relative top-2" alt="">
             <%} else if(type==='video') {%>
-                <video autoplay muted nodownload controls  class="w-[75%] h-auto relative top-2">
+                <video autoplay muted controlsList="nodownload" controls  class="w-[75%] h-auto relative top-2">
                     <source  src="/posts/videos/<%=items.contents[0].filename%>" type="video/mp4">
                 </video>
         <%}%>
