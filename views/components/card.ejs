@@ -6,7 +6,9 @@
             </div>
             <div class="userdetails">
                 <h4 class="username text-lg font-medium "><%=firstname%> <%=lastname%></h4>
-                 <h5 class="time data text-[#777]">23h</h5>
+                <%const [weekday,month,day,year,time]=new Date(items.createdAt).toString().split(" ")%>
+                <%const [cweekday,cmonth,cday,cyear,ctime]=new Date(Date.now()).toString().split(" ")%>
+                 <h5 class="time data text-[#777]"><%=cday===day?time:''%> <%=cmonth===month?day:month%> <%=cmonth===month?weekday:day%> <%=cyear===year?'':year%> </h5>
             </div>
             <ul class="relative w-[25px] h-[25px] rounded flex justify-center items-center">
                 <li class="absolute top-0 right-0 w-full h-full rounded-full mt-[6px] mr-[48px] list-none text-center">
