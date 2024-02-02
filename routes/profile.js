@@ -5,7 +5,6 @@ import userModel from '../db/models/user.js'
 router.get('/:username', isloggedIn, async function (req, res) {
 	const {username} = req.params
 	let userData = await userModel.findOne({username}).populate('posts').populate('followers')
-	console.log('followers',userData)
 	if (userData !== null) {
 		const {firstname, lastname, displaypicture, coverpicture, followers, following, bio, posts} = userData
 		let ownProfile = false

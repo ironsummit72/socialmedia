@@ -1,7 +1,7 @@
 import express ,{Router} from 'express'
 const router = Router()
 import userModel from '../db/models/user.js'
-import multer from 'multer'
+import multer,{diskStorage} from 'multer'
 import fs from 'fs'
 router.use(isloggedIn)
 
@@ -40,12 +40,12 @@ try {
 	console.error(err)
 }
 
-const storage = multer.diskStorage({
+const storage = diskStorage({
 	destination: function (req, file, cb) {
 		cb(null, './uploads/displaypicture')
 	},
 	filename: function (req, file, cb) {
-		console.log('file name', req.user)
+		
 
 		// eslint-disable-next-line no-unused-vars
 		const [filename, extension] = file.originalname.split('.')
@@ -58,7 +58,7 @@ const coverStorage = multer.diskStorage({
 		cb(null, './uploads/coverpicture')
 	},
 	filename: function (req, file, cb) {
-		console.log('file name', req.user)
+	
 
 		// eslint-disable-next-line no-unused-vars
 		const [filename, extension] = file.originalname.split('.')

@@ -20,7 +20,7 @@ router.post('/:username', async function (req, res) {
 			let newRequestedUserData = requestedUserData.followers.filter((userID) => {
 				return userID.toString() !== loggedInUserData._id.toString()
 			})
-			console.log(newRequestedUserData)
+			
 			requestedUserData.followers = [...newRequestedUserData]
 			await requestedUserData.save()
 			res.redirect(`../profile/${req.params.username}`)
