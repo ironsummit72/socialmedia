@@ -21,6 +21,7 @@ import followRouter from './routes/follow.js'
 import unfollowRouter from './routes/unfollow.js'
 import followInfoRouter from './routes/followinfo.js'
 import reelsRouter from './routes/reels.js'
+import photosRouter from './routes/photos.js'
 import likeRouter from './routes/like.js'
 import userModel from './db/models/user.js';
 import flash from 'connect-flash'
@@ -42,7 +43,7 @@ const store =  MongoStore.create({
 })
 
 store.on('error', function (err) {
-	console.log(err)
+	console.error(err)
 })
 app.use(
 	session({
@@ -87,6 +88,7 @@ app.use('/create',createRouter)
 app.use('/follow', followRouter)
 app.use('/unfollow', unfollowRouter)
 app.use('/reels', reelsRouter)
+app.use('/photos', photosRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
