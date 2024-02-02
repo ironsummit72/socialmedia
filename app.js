@@ -23,6 +23,8 @@ import followInfoRouter from './routes/followinfo.js'
 import reelsRouter from './routes/reels.js'
 import photosRouter from './routes/photos.js'
 import likeRouter from './routes/like.js'
+import finduserRouter from './routes/findusers.js'
+import exploreRouter from './routes/explore.js'
 import userModel from './db/models/user.js';
 import flash from 'connect-flash'
 import { verifyPassword } from './utils/hashgen.js'
@@ -89,6 +91,8 @@ app.use('/follow', followRouter)
 app.use('/unfollow', unfollowRouter)
 app.use('/reels', reelsRouter)
 app.use('/photos', photosRouter)
+app.use('/findusers', finduserRouter)
+app.use('/explore', exploreRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
