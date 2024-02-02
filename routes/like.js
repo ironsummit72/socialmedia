@@ -2,6 +2,7 @@ import express ,{Router} from 'express'
 const router = Router()
 import userModel from '../db/models/user.js'
 import postModel from '../db/models/post.js'
+import shuffle from '../utils/shuffle.js'
 // handle get requests
 
 router.use(isloggedIn)
@@ -10,6 +11,7 @@ router.get('/likes/:postId', async function (req, res) {
 	if (postId !== null) {
 		let postData = await postModel.findOne({_id: postId}).populate('likes')
 		const {likes} = postData
+		shuffle(likes)
 		res.render('likes', {likes})
 	}
 })
