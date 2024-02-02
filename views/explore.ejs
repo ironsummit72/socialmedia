@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/dist/output.css" rel="stylesheet">
+    <title>Explore</title>
+</head>
+<body>
+    <h1 class="mt-10 mb-10 text-center font-semibold text-2xl">Explore</h1>
+            <div class="flex justify-center">
+                <div class="postcontent grid grid-cols-3 w-[70%] gap-4 mb-20">
+                    <%postData.map((posts)=>{ %>
+                        <% let [type,ext]=posts.contents[0].mimetype.split('/')%>
+                     <%if(type=='image'){%> 
+                             <!-- <img  src="posts/images/<%=posts.contents[0].filename%>" alt=""> -->
+                            <a href="/profile/<%=posts.user.username%>"><%- include('components/photocards',{items:posts}); -%></a>
+                         <%} else if(type=='video'){%>
+                             <a href="/profile/<%=posts.user.username%>"><%- include('components/reelcard',{items:posts}); -%> </a>   
+                     <%}%>
+                     <%})%>
+                 </div>
+             </div>
+</body>
+</html>

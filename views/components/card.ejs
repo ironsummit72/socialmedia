@@ -14,12 +14,12 @@
                 </li>
             </ul>
         </div>
-        <h4 class="caption ml-10 line-clamp-2 relative top-1 w-[90%]"><%=items.caption%> </h4>
+        <h4 class="caption ml-10 line-clamp-2 relative top-1  w-[90%]"><%=items.caption%> </h4>
         <% let [type,extension]=items.contents[0].mimetype.split('/') %>
         <% if(type==='image') {%>
             <img src="/posts/images/<%=items.contents[0].filename%>" class="w-[85%] h-auto relative top-2" alt="">
             <%} else if(type==='video') {%>
-                <video autoplay muted controlsList="nodownload" controls  class="w-[75%] h-auto relative top-2">
+                <video autoplay muted controlsList="nodownload" controls  class="w-[75%] h-auto relative top-2 aspect-9/16">
                     <source  src="/posts/videos/<%=items.contents[0].filename%>" type="video/mp4">
                 </video>
         <%}%>
