@@ -1,12 +1,14 @@
 import express ,{Router} from 'express'
 const router = Router()
 import userModel from '../db/models/user.js'
+import shuffle from '../utils/shuffle.js'
 
 router.get('/:username', isloggedIn, async function (req, res) {
 	const {username} = req.params
 	let userData = await userModel.findOne({username}).populate('posts').populate('followers')
 	if (userData !== null) {
 		const {firstname, lastname, displaypicture, coverpicture, followers, following, bio, posts} = userData
+		shuffle(posts)
 		let ownProfile = false
 		if (username === req.user.username) {
 			ownProfile = true
