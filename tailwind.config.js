@@ -2,7 +2,12 @@
 module.exports = {
 	content: ['./views/**/*.ejs'],
 	theme: {
-		extend: {},
+		extend: {
+			aspectRatio:{
+				'9/16':'9/16',
+				
+			}
+		},
 	},
 	plugins: [],
 }
