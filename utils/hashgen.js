@@ -1,4 +1,4 @@
-const crypto = require('crypto')
+import crypto from 'crypto';
 
 // Function to generate a hash and salt for a given password
 const generateHash = (password) => {
@@ -18,4 +18,4 @@ const verifyPassword = (password, storedHash, storedSalt) => {
 
 	return hash === storedHash
 }
-module.exports = { generateHash, verifyPassword }
+export { generateHash, verifyPassword }

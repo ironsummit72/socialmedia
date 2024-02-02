@@ -1,9 +1,7 @@
-const express = require('express')
-const router = express.Router()
-const userModel = require('../db/models/user')
-
+import express,{Router} from 'express'
+import userModel from '../db/models/user.js'
+const router = Router()
 router.use(isloggedIn)
-
 router.post('/:username', async function (req, res) {
 	//follow logic
 	if (req.user.username !== null && req.params.username !== null) {
@@ -34,4 +32,4 @@ function isloggedIn(req, res, next) {
 	}
 }
 
-module.exports = router
+export default router

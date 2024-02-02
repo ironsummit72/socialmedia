@@ -1,9 +1,8 @@
-let express = require('express')
-let router = express.Router()
-const { generateHash } = require('../utils/hashgen')
-const userModel = require('../db/models/user')
-const passport = require('passport')
-
+import express,{Router} from 'express'
+let router = Router()
+import { generateHash } from '../utils/hashgen.js'
+import userModel from '../db/models/user.js'
+import passport from 'passport'
 passport.serializeUser(function (user, cb) {
 	// eslint-disable-next-line no-undef
 	process.nextTick(function () {
@@ -52,4 +51,4 @@ router.post('/register', async function (req, res) {
 })
 router.post('/login',passport.authenticate('local', {successRedirect: '/',failureRedirect: '/login',failureFlash:true}))
 
-module.exports = router
+export default router;

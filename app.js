@@ -1,44 +1,44 @@
 /* eslint-disable no-undef */
-let createError = require('http-errors')
-let express = require('express')
-let path = require('path')
-let cookieParser = require('cookie-parser')
-let logger = require('morgan')
-let session = require('express-session')
-const passport = require('passport')
-const LocalStrategy = require('passport-local')
-let MongoStore = require('connect-mongodb-session')(session)
-const userModel = require('./db/models/user')
-let indexRouter = require('./routes/index')
-let usersRouter = require('./routes/users')
-let authRouter = require('./routes/auth')
-let uploadRouter = require('./routes/upload')
-let profileRouter = require('./routes/profile')
-let createRouter = require('./routes/create')
-let followRouter = require('./routes/follow')
-let unfollowRouter = require('./routes/unfollow')
-let followInfoRouter = require('./routes/followinfo')
-let reelsRouter = require('./routes/reels')
-let likeRouter = require('./routes/like')
-let flash = require('connect-flash')
-const { verifyPassword } = require('./utils/hashgen')
+import createError from 'http-errors'
 
-
+import express, { json, urlencoded} from 'express'
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+const __dirname = dirname(fileURLToPath(import.meta.url));
+import cookieParser from 'cookie-parser'
+import logger from 'morgan'
+import session from 'express-session'
+import pkg from 'passport'
+import LocalStrategy from 'passport-local'
+import MongoStore from 'connect-mongo';
+import indexRouter from './routes/index.js'
+import usersRouter from './routes/users.js'
+import authRouter from './routes/auth.js'
+import uploadRouter from './routes/upload.js'
+import profileRouter from './routes/profile.js'
+import createRouter from './routes/create.js'
+import followRouter from './routes/follow.js'
+import unfollowRouter from './routes/unfollow.js'
+import followInfoRouter from './routes/followinfo.js'
+import reelsRouter from './routes/reels.js'
+import likeRouter from './routes/like.js'
+import userModel from './db/models/user.js';
+import flash from 'connect-flash'
+import { verifyPassword } from './utils/hashgen.js'
 let app = express()
-
 // view engine setup
-app.set('views', path.join(__dirname, 'views'))
+app.set('views', __dirname+'/views')
 app.set('view engine', 'ejs')
 
 app.use(logger('dev'))
-app.use(express.json())
-app.use(express.urlencoded({ extended: false }))
+app.use(json())
+app.use(urlencoded({ extended: false }))
 app.use(cookieParser())
-app.use(express.static(path.join(__dirname, 'public')))
-app.use(express.static(path.join(__dirname, 'uploads')))
-const store = new MongoStore({
-	uri: 'mongodb://localhost:27017/socialm',
-	collection: 'sessions',
+app.use(express.static(__dirname+'/public'))
+app.use(express.static(__dirname+'/uploads'))
+const store =  MongoStore.create({
+	mongoUrl: 'mongodb://localhost:27017/socialm',
+	collectionName:'sessions',
 })
 
 store.on('error', function (err) {
@@ -56,9 +56,9 @@ app.use(
 	})
 )
 app.use(flash())
-app.use(passport.initialize())
-app.use(passport.authenticate('session'))
-passport.use(
+app.use(pkg.initialize())
+app.use(pkg.authenticate('session'))
+pkg.use(
 	new LocalStrategy(async function (username, password, done) {
 		let userData = await userModel.findOne({ username })
 		if (userData !== null) {
@@ -104,4 +104,4 @@ app.use(function (err, req, res) {
 	res.render('error')
 })
 
-module.exports = app
+export default app

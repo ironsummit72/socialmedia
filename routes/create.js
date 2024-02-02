@@ -1,13 +1,12 @@
-const express = require('express')
-const router = express.Router()
-const multer = require('multer')
-const userModel=require('../db/models/user')
-const postModel=require('../db/models/post')
 
-
+import express,{Router} from 'express'
+import multer,{diskStorage} from 'multer'
+import userModel from '../db/models/user.js'
+import postModel from '../db/models/post.js'
+const router = Router()
 router.use(isloggedIn)
 
-const storage = multer.diskStorage({
+const storage = diskStorage({
 	destination: function (req, file, cb) {
 		
 		// eslint-disable-next-line no-unused-vars
@@ -62,5 +61,4 @@ function isloggedIn(req, res, next) {
 		res.redirect('/login')
 	}
 }
-
-module.exports = router
+export default router

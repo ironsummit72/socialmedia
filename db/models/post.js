@@ -1,9 +1,9 @@
-const mongoose = require('mongoose')
+import mongoose ,{Schema,model} from "mongoose"
 mongoose.connect('mongodb://localhost:27017/socialm')
 
-const postSchema = new mongoose.Schema({
+const postSchema = new Schema({
 	user: {
-		type: mongoose.Schema.Types.ObjectId,
+		type: Schema.Types.ObjectId,
 		ref: 'users',
 	},
 	typeofPost: {
@@ -14,7 +14,7 @@ const postSchema = new mongoose.Schema({
 		type: String,
 	},
 	likes: [{
-		type: mongoose.Schema.Types.ObjectId,
+		type: Schema.Types.ObjectId,
 		ref: 'users',
 	}],
 	contents: {
@@ -23,4 +23,5 @@ const postSchema = new mongoose.Schema({
 	},
 })
 // const Post =
-module.exports = mongoose.model('posts', postSchema)
+const postModel=model('posts', postSchema)
+export default postModel

@@ -1,7 +1,7 @@
-const express = require('express')
-const router = express.Router()
-const userModel = require('../db/models/user')
-const postModel = require('../db/models/post')
+import express ,{Router} from 'express'
+const router = Router()
+import userModel from '../db/models/user.js'
+import postModel from '../db/models/post.js'
 // handle get requests
 
 router.use(isloggedIn)
@@ -53,4 +53,4 @@ function isloggedIn(req, res, next) {
 	}
 }
 
-module.exports = router
+export default router

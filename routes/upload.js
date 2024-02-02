@@ -1,11 +1,12 @@
-const express = require('express')
-const router = express.Router()
-const userModel = require('../db/models/user')
-const multer = require('multer')
-const fs = require('fs')
+import express ,{Router} from 'express'
+const router = Router()
+import userModel from '../db/models/user.js'
+import multer from 'multer'
+import fs from 'fs'
 router.use(isloggedIn)
 
-const path = require('path')
+
+import path from 'path'
 const baseDir = './uploads'
 const subdirectories = [
 	'displaypicture',
@@ -117,4 +118,4 @@ function isloggedIn(req, res, next) {
 	}
 }
 
-module.exports = router
+export default router

@@ -1,6 +1,6 @@
-let express = require('express')
-let router = express.Router()
-const userModel = require('../db/models/user')
+import express ,{Router} from 'express'
+import userModel from '../db/models/user.js'
+let router = Router()
 
 /* GET home page. */
 router.get('/cover', function (req, res) {
@@ -56,4 +56,4 @@ function isloggedIn(req, res, next) {
 	}
 }
 
-module.exports = router
+export default router
