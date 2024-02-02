@@ -60,7 +60,7 @@ const userSchema = new Schema(
 				ref: 'posts',
 			},
 		],
-	}
+	},{timestamps:true}
 )
 const userModel=model('users', userSchema)
 // const User =
