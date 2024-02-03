@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Navbar</title>
     <link rel="stylesheet" href="/dist/output.css">
+    <link rel="stylesheet" href="/stylesheets/navbar.css">
 </head>
+<style>
+
+</style>
 <body>
     <nav class="bg-white shadow-md ">
      <div class="navbar flex w-full">
@@ -18,7 +22,18 @@
             <a href="/explore"><img src="/icons/explore.svg" alt="" class="menu  w-[45px] h-[45px] rounded-full cursor-pointer"></a>
             <img src="/icons/message.svg" alt="" class="menu w-[45px]  w-[45px] rounded-full h-[45px] cursor-pointer ">
             <a href="/findusers"><img src="/icons/findpeople.svg" alt="" class="menu  w-[45px] h-[45px] rounded-full cursor-pointer "></a>
-           <a href="/"><img src="<%=ownerpicture%>" alt="" class="menu  w-[45px] h-[45px] rounded-full cursor-pointer"></a> 
+            <div class="dropdown">
+
+                <a href="/"><img src="<%=ownerpicture%>" alt="" class="menu  w-[45px] h-[45px] rounded-full cursor-pointer"></a> 
+                <div class="dropdown-content">
+    
+                    
+                     
+                      <form action="/logout" method="post">
+                        <input type="submit" value="Log out">
+                      </form>
+                </div>
+            </div>
         </div>
      </div>
     </nav>
