@@ -25,8 +25,9 @@ This app is a mock of social media. which have features like creating an account
   cd socialmedia
   npm install 
 ```
-## Generate the output.css for design
+## Generate the output.css for design (Important)
 To generate the output.css file using the style-related npm scripts, run the following command:
+**Note:** don't skip this step or else the app will look terrible without design.
 ```bash 
 npm run style 
 ```
