@@ -26,6 +26,7 @@ import likeRouter from './routes/like.js'
 import finduserRouter from './routes/findusers.js'
 import exploreRouter from './routes/explore.js'
 import postsRouter from './routes/posts.js'
+import likedPostsRouter from './routes/likedposts.js'
 import userModel from './db/models/user.js';
 import flash from 'connect-flash'
 import { verifyPassword } from './utils/hashgen.js'
@@ -95,6 +96,7 @@ app.use('/photos', photosRouter)
 app.use('/findusers', finduserRouter)
 app.use('/explore', exploreRouter)
 app.use('/viewpost', postsRouter)
+app.use('/likedposts', likedPostsRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
