@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/dist/output.css" rel="stylesheet">
+    <title>view Post</title>
+</head>
+<body>
+
+ <div class="maincontainer flex w-full h-screen justify-center items-center">
+
+     <div class="card w-[28vw] border max-h-[95vh] h-auto shadow-2xl rounded-lg flex flex-col items-center ">
+         <div class="profile-info w-full   h-15 flex items-center">
+             <div class="profile_img relative w-[40px] h-[40px] mt-1 ml-6 rounded-full overflow-hidden mr-[12px] ">
+                 <a href="/profile/<%=postData.user.username%>"><img src="<%=postData.user.displaypicture%>" alt="user" class="cover cursor-pointer absolute top-0 right-0 w-full h-full object-cover object-center pointer "></a>
+                </div>
+                <div class="userdetails">
+                    <a href="/profile/<%=postData.user.username%>">
+                        <h4 class="username text-lg font-medium "><%=postData.user.firstname%> <%=postData.user.lastname%></h4>
+                    </a>
+                    <%const [weekday,month,day,year,time]=new Date(postData.createdAt).toString().split(" ")%>
+                    <%const [cweekday,cmonth,cday,cyear,ctime]=new Date(Date.now()).toString().split(" ")%>
+                    <h5 class="time data text-[#777]"><%=cday===day?time:''%> <%=cmonth===month?day:month%> <%=cmonth===month?weekday:day%> <%=cyear===year?'':year%> </h5>
+                </div>
+                <ul class="relative w-[25px] h-[25px] rounded flex justify-center items-center">
+                    <li class="absolute top-0 right-0 w-full h-full rounded-full mt-[6px] mr-[48px] list-none text-center">
+                        <img src="/icons/global.svg"  alt="globe" class="cover absolute bottom-4 right-0 left-14 w-full h-full rounded-full mt-[-1.5px]">
+                    </li>
+                </ul>
+            </div>
+            <h4 class="caption ml-10 line-clamp-2 relative top-1  w-[90%]"><%=postData.caption%> </h4>
+            <% let [type,extension]=postData.contents[0].mimetype.split('/') %>
+            <% if(type==='image') {%>
+                <img src="/posts/images/<%=postData.contents[0].filename%>" class="w-[85%] h-auto relative top-2 rounded-md" alt="">
+                <%} else if(type==='video') {%>
+                    <video autoplay muted controlsList="nodownload" controls  class="w-[75%] h-auto relative top-2 aspect-9/16 rounded-md">
+                        <source  src="/posts/videos/<%=postData.contents[0].filename%>" type="video/mp4">
+                    </video>
+                    <%}%>
+                    <% let isLiked=postData.likes.some((filter)=> {
+                        return filter == loggedInUserId;
+                    });
+                    %>
+                    <div class="likes_counts mb-8 relative  w-full">
+                        <ul class="relative w-[20px] h-[20px] rounded flex justify-center items-center">
+                            <li class="absolute top-0 right-0 w-full h-full rounded-full mt-[38px] mr-[32px] list-none text-center">
+                                <img src="/icons/like.svg"  alt="globe" class="cover absolute bottom-4 right-0 left-14 w-full h-full rounded-full mt-[-1.5px]">
+                            </li>
+                        </ul>
+                        <a href="/likes/<%=postData.id%>" class="ml-12 text-[#777]"><%=postData.likes.length%> likes</a>
+                    </div>
+                    <div class="buttons relative w-[120%] h-12 bottom-6  p-5 flex items-center justify-around " >
+                        <% if(isLiked) { %>
+                            <form action="/like/<%=postData._id%>+<%=postData.user.username%>" method="post">
+                                <input class="profile_img relative w-[25px] h-[25px] mt-1 overflow-hidden " type="image" src="/icons/likef.svg" alt="user" class="like cursor-pointer absolute top-0 right-0 w-full h-full object-cover object-center pointer">
+                            </form>
+                            <% }else { %>
+                                <form action="/like/<%=postData._id%>+<%=postData.user.username%>" method="post">
+                                    <input class="profile_img relative w-[25px] h-[25px] mt-1 overflow-hidden " type="image" src="/icons/like.svg" alt="user" class="like cursor-pointer absolute top-0 right-0 w-full h-full object-cover object-center pointer">
+                                </form>
+                                <% }%>
+                                
+                                <div class="profile_img relative w-[25px] h-[25px] mt-1 ml-6  overflow-hidden mr-[12px] ">
+                                    <img src="/icons/comment.svg" alt="user" class="comments cursor-pointer absolute top-0 right-0 w-full h-full object-cover object-center pointer ">
+                                </div>
+                                
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+                        
+                        
+                        
+                    </body>
+                    </html>
