@@ -16,9 +16,11 @@
                      <%if(ownprofile){%>
                         <a class="following" href="/following"><span class="relative left-20 font-bold text-red-500 "> <%=following.length%> following</span></a> 
                         <a class="followers" href="/followers"><span class="relative left-20 font-bold text-red-500 "><%=followers.length%> followers</span></a> 
-                     <%}else{%>
-                        <a class="following" href="/following/<%=username%>"><span class="relative left-20 font-bold text-red-500 "> <%=following.length%> following</span></a> 
-                        <a class="followers" href="/followers/<%=username%>"><span class="relative left-20 font-bold text-red-500 "><%=followers.length%> followers</span></a> 
+                        <span class="relative left-20 font-bold "><%=posts.length%>posts</span>
+                        <%}else{%>
+                            <a class="following" href="/following/<%=username%>"><span class="relative left-20 font-bold text-red-500 "> <%=following.length%> following</span></a> 
+                            <a class="followers" href="/followers/<%=username%>"><span class="relative left-20 font-bold text-red-500 "><%=followers.length%> followers</span></a> 
+                            <span class="relative left-20 font-bold "><%=posts.length%>posts</span>
                     <% }%>
                 
 
