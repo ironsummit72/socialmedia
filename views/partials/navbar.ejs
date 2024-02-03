@@ -23,15 +23,12 @@
             <img src="/icons/message.svg" alt="" class="menu w-[45px]  w-[45px] rounded-full h-[45px] cursor-pointer ">
             <a href="/findusers"><img src="/icons/findpeople.svg" alt="" class="menu  w-[45px] h-[45px] rounded-full cursor-pointer "></a>
             <div class="dropdown">
-
                 <a href="/"><img src="<%=ownerpicture%>" alt="" class="menu  w-[45px] h-[45px] rounded-full cursor-pointer"></a> 
                 <div class="dropdown-content">
-    
-                    
-                     
-                      <form action="/logout" method="post">
-                        <input type="submit" value="Log out">
-                      </form>
+                    <form style="display:none" id="myform" method="post" action="/logout"></form>
+                    <a class="logoutbtn" onclick="document.getElementById('myform').submit();">Logout</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
                 </div>
             </div>
         </div>
