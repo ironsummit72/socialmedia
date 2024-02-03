@@ -15,9 +15,9 @@
                         <% let [type,ext]=posts.contents[0].mimetype.split('/')%>
                      <%if(type=='image'){%> 
                              <!-- <img  src="posts/images/<%=posts.contents[0].filename%>" alt=""> -->
-                            <a href="/profile/<%=posts.user.username%>"><%- include('components/photocards',{items:posts}); -%></a>
+                            <a href="/viewpost/<%=posts.id%>"><%- include('components/photocards',{items:posts}); -%></a>
                          <%} else if(type=='video'){%>
-                             <a href="/profile/<%=posts.user.username%>"><%- include('components/reelcard',{items:posts}); -%> </a>   
+                             <a href="/viewpost/<%=posts.id%>"><%- include('components/reelcard',{items:posts}); -%> </a>   
                      <%}%>
                      <%})%>
                  </div>
