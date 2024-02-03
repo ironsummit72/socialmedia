@@ -28,13 +28,10 @@
                 <p class="text-black font-bold "><%=bio%></p>
                 <div class="h-14 relative  top-5 flex">
                     <% if(ownprofile){%>
-                        <a class=" bg-[#0453e8] text-white flex justify-center items-center   rounded-full" href="/dp"> EditAvatar</a>
-                        <a class= "bg-[#0453e8] text-white flex justify-center items-center rounded-full" href="/create/post">Create Post</a>
-                        <a class= "bg-[#0453e8] text-white flex justify-center items-center rounded-full" href="/cover">Edit Cover and Bio</a>
+                        <a class="flex justify-center items-center text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" href="/dp"> EditAvatar</a>
+                        <a class= "flex justify-center items-center text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" href="/create/post">Create Post</a>
+                        <a class= "flex justify-center items-center text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" href="/cover">Edit Cover and Bio</a>
                     <%} else{%>
-                        
-
-
                         <% let isFollowing=followers.some((filter)=> {
                             return filter.username === loggedInUser;
                             });
