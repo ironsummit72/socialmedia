@@ -29,7 +29,8 @@
                     </li>
                 </ul>
             </div>
-            <h4 class="caption ml-10 line-clamp-2 relative top-1  w-[90%]"><%=postData.caption%> </h4>
+            <h2 class="getcaption" style="display: none;"><%=postData.caption%></h2>
+            <div  class="caption ml-10 line-clamp-2 relative top-1  w-[90%]"></div>
             <% let [type,extension]=postData.contents[0].mimetype.split('/') %>
             <% if(type==='image') {%>
                 <img src="/posts/images/<%=postData.contents[0].filename%>" class="w-[85%] h-auto relative top-2 rounded-md" alt="">
@@ -64,14 +65,10 @@
                                 <div class="profile_img relative w-[25px] h-[25px] mt-1 ml-6  overflow-hidden mr-[12px] ">
                                     <img src="/icons/comment.svg" alt="user" class="comments cursor-pointer absolute top-0 right-0 w-full h-full object-cover object-center pointer ">
                                 </div>
-                                
+                        
                             </div>
                         </div>
-                        
-                        
                     </div>
-                        
-                        
-                        
                     </body>
+                    <script src="/javascripts/viewpostcaption.js"></script>
                     </html>
