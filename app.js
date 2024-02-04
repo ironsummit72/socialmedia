@@ -9,6 +9,7 @@ import cookieParser from 'cookie-parser'
 import logger from 'morgan'
 import session from 'express-session'
 import pkg from 'passport'
+import dotenv from 'dotenv'
 import LocalStrategy from 'passport-local'
 import MongoStore from 'connect-mongo';
 import indexRouter from './routes/index.js'
@@ -31,6 +32,8 @@ import hashTagRouter from './routes/hashtags.js'
 import userModel from './db/models/user.js';
 import flash from 'connect-flash'
 import { verifyPassword } from './utils/hashgen.js'
+
+dotenv.config()
 let app = express()
 // view engine setup
 app.set('views', __dirname+'/views')
@@ -42,8 +45,10 @@ app.use(urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(__dirname+'/public'))
 app.use(express.static(__dirname+'/uploads'))
+const DATABASENAME=process.env.DB_NAME
+const DBURL=process.env.DB_URL
 const store =  MongoStore.create({
-	mongoUrl: 'mongodb://localhost:27017/socialm',
+	mongoUrl: `${DBURL}/${DATABASENAME}`,
 	collectionName:'sessions',
 })
 
