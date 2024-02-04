@@ -3,3 +3,4 @@ node_modules
 output.css
 public/dist/
 tests
+.env
