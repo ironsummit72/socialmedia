@@ -5,7 +5,6 @@ const router=Router();
 
 router.get('/',isloggedIn, async function(req, res){
     const postData=await postModel.find({}).populate('user');
-	console.log(req.user);
 	let filterPostData=postData.filter((items)=>{
 		return items.user.id!==req.user.id
 	})
