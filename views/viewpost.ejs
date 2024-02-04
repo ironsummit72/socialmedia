@@ -10,12 +10,12 @@
 
  <div class="maincontainer flex w-full h-screen justify-center items-center">
 
-     <div class="card w-[28vw] border max-h-[95vh] h-auto shadow-2xl rounded-lg flex flex-col items-center ">
+     <div class="card w-[28vw] border max-h-[97vh] h-auto shadow-2xl rounded-lg flex flex-col items-center ">
          <div class="profile-info w-full   h-15 flex items-center">
-             <div class="profile_img relative w-[40px] h-[40px] mt-1 ml-6 rounded-full overflow-hidden mr-[12px] ">
+             <div class="mt-5 profile_img relative w-[40px] h-[40px] mt-1 ml-6 rounded-full overflow-hidden mr-[12px] ">
                  <a href="/profile/<%=postData.user.username%>"><img src="<%=postData.user.displaypicture%>" alt="user" class="cover cursor-pointer absolute top-0 right-0 w-full h-full object-cover object-center pointer "></a>
                 </div>
-                <div class="userdetails">
+                <div class="userdetails mt-5">
                     <a href="/profile/<%=postData.user.username%>">
                         <h4 class="username text-lg font-medium "><%=postData.user.firstname%> <%=postData.user.lastname%></h4>
                     </a>
@@ -23,14 +23,14 @@
                     <%const [cweekday,cmonth,cday,cyear,ctime]=new Date(Date.now()).toString().split(" ")%>
                     <h5 class="time data text-[#777]"><%=cday===day?time:''%> <%=cmonth===month?day:month%> <%=cmonth===month?weekday:day%> <%=cyear===year?'':year%> </h5>
                 </div>
-                <ul class="relative w-[25px] h-[25px] rounded flex justify-center items-center">
-                    <li class="absolute top-0 right-0 w-full h-full rounded-full mt-[6px] mr-[48px] list-none text-center">
+                <ul class="mt-5 relative w-[25px] h-[25px] rounded flex justify-center items-center">
+                    <li class="absolute top-0 right-0 w-full h-full rounded-full mt-[6px] mr-[95px] list-none text-center">
                         <img src="/icons/global.svg"  alt="globe" class="cover absolute bottom-4 right-0 left-14 w-full h-full rounded-full mt-[-1.5px]">
                     </li>
                 </ul>
             </div>
             <h2 class="getcaption" style="display: none;"><%=postData.caption%></h2>
-            <div  class="caption ml-10 line-clamp-2 relative top-1  w-[90%]"></div>
+            <div  class="caption ml-10 line-clamp-2 relative w-[90%]"></div>
             <% let [type,extension]=postData.contents[0].mimetype.split('/') %>
             <% if(type==='image') {%>
                 <img src="/posts/images/<%=postData.contents[0].filename%>" class="w-[85%] h-auto relative top-2 rounded-md" alt="">
