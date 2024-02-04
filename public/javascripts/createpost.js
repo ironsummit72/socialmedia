@@ -32,6 +32,26 @@ function previewMedia() {
 		reader.readAsDataURL(file)
 	}
 }
+let caption=document.getElementById('caption')
+let labelCaptions=document.getElementById('forcaption')
+let submitButton=document.getElementById('submit')
+caption.onchange=function(e){
+	const wordsText=e.target.value.trim().split(' ')
+	if(wordsText.length>13)
+	{
+		labelCaptions.innerText='the caption length should not be more than 13 words'
+		labelCaptions.style.color='red'
+		submitButton.style.backgroundColor='red'
+		submitButton.addEventListener('click',(e)=>{
+			e.preventDefault()
+		})
+	}
+	else{
+		labelCaptions.innerText='looks good'
+		submitButton.style.backgroundColor='green'
+		labelCaptions.style.color='green'
+	}
+}
 
 // eslint-disable-next-line no-unused-vars
 

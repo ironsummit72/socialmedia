@@ -7,20 +7,14 @@
       <link rel="stylesheet" href="/stylesheets/createpost.css">
 </head>
 <body>
-
     <form action="/create/post" method="post" enctype="multipart/form-data">
     <label for="media">Upload Media:</label>
     <input type="file" id="media" name="posts" accept="image/*,video/*" onchange="previewMedia()" required>
-
     <div id="mediaPreview"></div>
-
-    <label for="caption">Caption:</label>
+    <label id="forcaption" for="caption">Caption:</label>
     <textarea id="caption" name="caption" rows="4" placeholder="What's on your mind, <%=username%>?" required></textarea>
-
-    <button type="submit">Create Post</button>
+    <button id="submit" type="submit">Create Post</button>
 </form>
-
 <script src="/javascripts/createpost.js"></script>
-
 </body>
 </html>
