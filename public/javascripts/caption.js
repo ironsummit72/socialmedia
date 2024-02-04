@@ -7,5 +7,5 @@ const captionTextList = getCaptionList.forEach((caption, index) => {
 	captionList[index].appendChild(newCaption)
 })
 function linkify(text) {
-	return text.replace(reUrl, (url) => `<a style="color:blue;" href="tags/${url.slice(1)}" target="_blank">${url}</a>`)
+	return text.replace(reUrl, (url) => `<a style="color:blue;" href="tags/${url.slice(1)}">${url}</a>`)
 }
