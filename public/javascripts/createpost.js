@@ -42,14 +42,13 @@ caption.onchange=function(e){
 		labelCaptions.innerText='the caption length should not be more than 13 words'
 		labelCaptions.style.color='red'
 		submitButton.style.backgroundColor='red'
-		submitButton.addEventListener('click',(e)=>{
-			e.preventDefault()
-		})
+		submitButton.disabled=true
 	}
 	else{
 		labelCaptions.innerText='looks good'
 		submitButton.style.backgroundColor='green'
 		labelCaptions.style.color='green'
+		submitButton.disabled=false
 	}
 }
 
