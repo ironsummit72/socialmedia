@@ -1,6 +1,4 @@
 import mongoose ,{Schema,model} from "mongoose"
-mongoose.connect('mongodb://localhost:27017/socialm')
-
 const postSchema = new Schema({
 	user: {
 		type: Schema.Types.ObjectId,

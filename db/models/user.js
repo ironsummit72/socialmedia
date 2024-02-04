@@ -1,5 +1,10 @@
-import mongoose ,{Schema,model} from "mongoose"
-mongoose.connect('mongodb://localhost:27017/socialm')
+import {Schema,model} from "mongoose"
+
+import connectDB from "../../utils/connectDB.js"
+
+
+connectDB()
+
 const userSchema = new Schema(
 	{
 		username: {
