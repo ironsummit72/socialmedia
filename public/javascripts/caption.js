@@ -3,7 +3,6 @@ const captionList = document.querySelectorAll('.caption')
 const reUrl = /#(\w+)/gi
 const captionTextList = getCaptionList.forEach((caption, index) => {
 	const newCaption = document.createElement('div')
-	console.log(caption.textContent, index)
 	newCaption.innerHTML = linkify(caption.textContent)
 	captionList[index].appendChild(newCaption)
 })
