@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/dist/output.css" rel="stylesheet">
+    <title>#<%=tagName%>
+    </title>
+</head>
+
+<body>
+    <%if(posts.length> 0){%>
+        <h1 class="mt-10 mb-10 text-center font-semibold text-2xl"> posts related #<%=tagName%>
+        </h1>
+        <%}else{%>
+            <h1 class="mt-10 mb-10 text-center font-semibold text-2xl">no posts related #<%=tagName%>
+            </h1>
+            <%}%>
+                <div class="flex justify-center">
+                    <div class="postcontent grid grid-cols-3 w-[70%] gap-4 mb-20">
+                        <%posts.map((posts)=>{ %>
+                            <% let [type,ext]=posts.contents[0].mimetype.split('/')%>
+                                <%if(type=='image'){%>
+                                    <a href="/viewpost/<%=posts.id%>"><%-
+                                            include('components/photocards',{items:posts}); -%></a>
+                                    <%} else if(type=='video' ){%>
+                                        <a href="/viewpost/<%=posts.id%>"><%-
+                                                include('components/reelcard',{items:posts}); -%> </a>
+                                        <%}%>
+                                            <%})%>
+
+                    </div>
+                </div>
+</body>
+</html>
