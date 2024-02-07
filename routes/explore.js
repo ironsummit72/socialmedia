@@ -6,7 +6,7 @@ const router=Router();
 router.get('/',isloggedIn, async function(req, res){
     const postData=await postModel.find({}).populate('user');
 	let filterPostData=postData.filter((items)=>{
-		return items.user.id!==req.user.id
+		return items.user?.id!==req.user.id
 	})
     shuffle(filterPostData)
 	res.render('explore',{postData:filterPostData})
