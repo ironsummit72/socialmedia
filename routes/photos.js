@@ -12,7 +12,7 @@ router.get('/', isloggedIn, async function (req, res) {
 			ownProfile = true
 		}
 		const ownerpicture = await loggedInuserDetails(req.user.username)
-		res.render('reels', {
+		res.render('photos', {
 			username,
 			firstname,
 			lastname,
