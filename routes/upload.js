@@ -1,7 +1,7 @@
 import express ,{Router} from 'express'
 const router = Router()
 import userModel from '../db/models/user.js'
-import multer,{diskStorage} from 'multer'
+import upload from '../middleware/multer.js'
 import fs from 'fs'
 router.use(isloggedIn)
 
@@ -39,37 +39,6 @@ try {
 } catch (err) {
 	console.error(err)
 }
-
-const storage = diskStorage({
-	destination: function (req, file, cb) {
-		cb(null, './uploads/displaypicture')
-	},
-	filename: function (req, file, cb) {
-		
-
-		// eslint-disable-next-line no-unused-vars
-		const [filename, extension] = file.originalname.split('.')
-		const { username } = req.user
-		cb(null, file.fieldname + '-' + username + '.' + extension)
-	},
-})
-const coverStorage = multer.diskStorage({
-	destination: function (req, file, cb) {
-		cb(null, './uploads/coverpicture')
-	},
-	filename: function (req, file, cb) {
-	
-
-		// eslint-disable-next-line no-unused-vars
-		const [filename, extension] = file.originalname.split('.')
-		const { username } = req.user
-		cb(null, file.fieldname + '-' + username + '.' + extension)
-	},
-})
-
-const upload = multer({ storage: storage })
-const coverUpload = multer({ storage: coverStorage })
-
 router.get('/dp', function (req, res) {
 	res.render('uploadprofile')
 })
@@ -77,7 +46,7 @@ router.get('/cover', function (req, res) {
 	res.render('uploadcover')
 })
 
-router.post('/dp', upload.single('avatar'), async function (req, res) {
+router.post('/dp', upload.single('displaypicture'), async function (req, res) {
 	const { path } = req.file
 	const { username } = req.user
 
@@ -90,7 +59,7 @@ router.post('/dp', upload.single('avatar'), async function (req, res) {
 	res.redirect('/')
 })
 
-router.post('/cover', coverUpload.single('cover'), async function (req, res) {
+router.post('/cover', upload.single('coverpicture'), async function (req, res) {
 	const { path } = req.file
 	const { username } = req.user
 	let pattern = /uploads/g
