@@ -10,9 +10,13 @@ router.get('/likes/:postId', async function (req, res) {
 	const {postId} = req.params
 	if (postId !== null) {
 		let postData = await postModel.findOne({_id: postId}).populate('likes')
-		const {likes} = postData
-		shuffle(likes)
-		res.render('likes', {likes})
+		if(postData!==null){
+			const {likes} = postData
+			shuffle(likes)
+			res.render('likes', {likes})
+		}else{
+			res.render('someerror', {message:'no post found '})
+		}
 	}
 })
 // handle post requests
