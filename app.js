@@ -19,7 +19,6 @@ import uploadRouter from './routes/upload.js'
 import profileRouter from './routes/profile.js'
 import createRouter from './routes/create.js'
 import followRouter from './routes/follow.js'
-import unfollowRouter from './routes/unfollow.js'
 import followInfoRouter from './routes/followinfo.js'
 import reelsRouter from './routes/reels.js'
 import photosRouter from './routes/photos.js'
@@ -96,7 +95,6 @@ app.use('/upload', uploadRouter)
 app.use('/profile',profileRouter)
 app.use('/create',createRouter)
 app.use('/follow', followRouter)
-app.use('/unfollow', unfollowRouter)
 app.use('/reels', reelsRouter)
 app.use('/photos', photosRouter)
 app.use('/findusers', finduserRouter)
