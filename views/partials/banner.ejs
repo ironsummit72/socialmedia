@@ -40,31 +40,16 @@
                             %>
                         
                             <% if(isFollowing) {%>
-                                <form id="follow" class="w-20 h-20   flex justify-center items-center containerbuttons" action="/unfollow/<%=username%>" method="POST">
-                                    <input for="follow" class="bg-gray-300 cursor-pointer text-black font-bold rounded-full" type="submit" value="unfollow"  />
-                                </form>
-                            <%}else {%>
-                                <form id="follow" class="w-20 h-20   flex justify-center items-center containerbuttons" action="/follow/<%=username%>" method="POST">
-                                    <input for="follow" class="bg-blue-700 cursor-pointer text-white font-bold rounded-full" type="submit" value="follow"  />
-                                </form>
-
+                                <button id="followunfollow" onclick="onClick('<%=username%>')" class="unfollow w-[60%] h-10 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">unfollow</button>
+                                <%}else {%>
+                                    <button id="followunfollow" onclick="onClick('<%=username%>')" class="follow w-[60%] h-10 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">follow</button>
                            <%}%>
-
-
-
-
-                       
-
-                            <!-- <button id="follow" class="bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Follow</button>
-                            <button id="message" class="bg-blue-700 text-white font-bold py-2 px-4 rounded-full">message</button> -->
-
                  <%   }  %>
-                  
-                  
                 </div>
             </div>
             <%- include('./profilenav'); -%>
         </div>
     </div>
 </body>
+<script src="/javascripts/updateFollow.js"></script>
 </html>
