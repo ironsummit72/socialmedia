@@ -49,26 +49,23 @@
                                 <img src="/icons/like.svg"  alt="globe" class="cover absolute bottom-4 right-0 left-14 w-full h-full rounded-full mt-[-1.5px]">
                             </li>
                         </ul>
-                        <a href="/likes/<%=postData.id%>" class="ml-12 text-[#777]"><%=postData.likes.length%> likes</a>
+                        <a href="/likes/<%=postData.id%>" id="likecount<%=postData._id%>+<%=postData.user.username%>" class="ml-12 text-[#777]"><%=postData.likes.length%> likes</a>
                     </div>
                     <div class="buttons relative w-[120%] h-12 bottom-6  p-5 flex items-center justify-around " >
                         <% if(isLiked) { %>
-                            <form action="/like/<%=postData._id%>+<%=postData.user.username%>" method="post">
-                                <input class="profile_img relative w-[25px] h-[25px] mt-1 overflow-hidden " type="image" src="/icons/likef.svg" alt="user" class="like cursor-pointer absolute top-0 right-0 w-full h-full object-cover object-center pointer">
-                            </form>
+                            <img  onclick="postId('<%=postData._id%>+<%=postData.user.username%>')" class="likebtnimg" id="likebtn<%=postData._id%>+<%=postData.user.username%>" src="/icons/likef.svg" alt="">
                             <% }else { %>
-                                <form action="/like/<%=postData._id%>+<%=postData.user.username%>" method="post">
-                                    <input class="profile_img relative w-[25px] h-[25px] mt-1 overflow-hidden " type="image" src="/icons/like.svg" alt="user" class="like cursor-pointer absolute top-0 right-0 w-full h-full object-cover object-center pointer">
-                                </form>
+                                <img  onclick="postId('<%=postData._id%>+<%=postData.user.username%>')" class="likebtnimg" id="likebtn<%=postData._id%>+<%=postData.user.username%>" src="/icons/like.svg" alt="">
                                 <% }%>
                                 
                                 <div class="profile_img relative w-[25px] h-[25px] mt-1 ml-6  overflow-hidden mr-[12px] ">
                                     <img src="/icons/comment.svg" alt="user" class="comments cursor-pointer absolute top-0 right-0 w-full h-full object-cover object-center pointer ">
                                 </div>
-                        
                             </div>
                         </div>
                     </div>
                     </body>
                     <script src="/javascripts/viewpostcaption.js"></script>
+                    <script src="/javascripts/updateLike.js"></script>
+                   
                     </html>

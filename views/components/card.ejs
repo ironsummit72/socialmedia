@@ -37,18 +37,14 @@
                     <img src="/icons/like.svg"  alt="globe" class="cover absolute bottom-4 right-0 left-14 w-full h-full rounded-full mt-[-1.5px]">
                 </li>
             </ul>
-            <a href="/likes/<%=items.id%>" class="ml-12 text-[#777]"><%=items.likes.length%> likes</a>
+            <a href="/likes/<%=items.id%>" id="likecount<%=items._id%>+<%=username%>" class="ml-12 text-[#777]"><%=items.likes.length%> likes</a>
         </div>
     
         <div class="buttons relative w-[120%] h-12 bottom-6  p-5 flex items-center justify-around " >
             <% if(isLiked) { %>
-                <form action="/like/<%=items._id%>+<%=username%>" method="post">
-                    <input class="profile_img relative w-[25px] h-[25px] mt-1 overflow-hidden " type="image" src="/icons/likef.svg" alt="user" class="like cursor-pointer absolute top-0 right-0 w-full h-full object-cover object-center pointer">
-                </form>
-           <% }else { %>
-            <form action="/like/<%=items._id%>+<%=username%>" method="post">
-                <input class="profile_img relative w-[25px] h-[25px] mt-1 overflow-hidden " type="image" src="/icons/like.svg" alt="user" class="like cursor-pointer absolute top-0 right-0 w-full h-full object-cover object-center pointer">
-            </form>
+                <img  onclick="postId('<%=items._id%>+<%=username%>')" class="likebtnimg" id="likebtn<%=items._id%>+<%=username%>" src="/icons/likef.svg" alt="">
+                <% }else { %>
+                 <img  onclick="postId('<%=items._id%>+<%=username%>')" class="likebtnimg" id="likebtn<%=items._id%>+<%=username%>" src="/icons/like.svg" alt="">
           <% }%>
          
             <div class="profile_img relative w-[25px] h-[25px] mt-1 ml-6  overflow-hidden mr-[12px] ">
@@ -58,3 +54,4 @@
         </div>
 
     </div>
+
