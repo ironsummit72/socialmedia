@@ -32,7 +32,7 @@ router.post('/like/:postIdUser', async function (req, res) {
 		await userData.save()
 		postData.likes.push(userData._id)
 		await postData.save()
-		res.redirect('.././profile/' + user)
+		res.json({isLiked:true})
 	} else {
 		let userData = await userModel.findOne({username})
 		let postData = await postModel.findOne({_id: postId})
@@ -47,7 +47,7 @@ router.post('/like/:postIdUser', async function (req, res) {
 		await userData.save()
 		postData.likes=[...newPostData]
 		await postData.save()
-		res.redirect('.././profile/' + user)
+		res.json({isLiked:false})
 	}
 })
 
