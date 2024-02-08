@@ -13,15 +13,25 @@ router.post('/:username', async function (req, res) {
 			await loggedInUserData.save()
 			requestedUserData.followers.push(loggedInUserData._id)
 			await requestedUserData.save()
-			res.status(200).redirect(`../profile/${req.params.username}`)
+			res.status(200).json({isFollowing: true})
 		} else {
-			res.send('you are already following ' + req.params.username)
+			if (loggedInUserData.following.includes(requestedUserData._id) &&requestedUserData.followers.includes(loggedInUserData._id)) {
+				let newLoggedInUserData = loggedInUserData.following.filter((userID) => {
+					return userID.toString() !== requestedUserData._id.toString()
+				})
+				loggedInUserData.following = [...newLoggedInUserData]
+				await loggedInUserData.save()
+				let newRequestedUserData = requestedUserData.followers.filter((userID) => {
+					return userID.toString() !== loggedInUserData._id.toString()
+				})
+				
+				requestedUserData.followers = [...newRequestedUserData]
+				await requestedUserData.save()
+				res.status(200).json({isFollowing: false})
+			}
+			
 		}
-		
 	}
-
-	
-	
 })
 
 function isloggedIn(req, res, next) {
