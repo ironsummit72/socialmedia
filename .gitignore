@@ -4,3 +4,4 @@ output.css
 public/dist/
 tests
 .env
+todo.md
