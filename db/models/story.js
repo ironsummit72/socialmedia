@@ -14,6 +14,6 @@ const storySchema = new mongoose.Schema(
 	},
 	{timestamps: true},
 )
-storySchema.index({createdAt: 1}, {expireAfterSeconds: 3600})
+storySchema.index({createdAt: 1}, {expireAfterSeconds: 86400})
 const storyModel = mongoose.model('story', storySchema)
 export default storyModel

@@ -29,7 +29,7 @@ const storage = multer.diskStorage({
 		cb(null, type + '-' + req.user.username+'-' + uniqueSuffix+ path.extname(file.originalname))
     }else if(file.fieldname==='stories')
     {
-      const uniqueSuffix = Date.now()+3600000 + '-' + Math.round(Math.random() * 1e9)
+      const uniqueSuffix = Date.now()+86400000 + '-' + Math.round(Math.random() * 1e9)
       const [type, extension] = file.mimetype.split('/')
       cb(null, file.fieldname + '-' + req.user.username+'-' + uniqueSuffix+ path.extname(file.originalname))
     }
