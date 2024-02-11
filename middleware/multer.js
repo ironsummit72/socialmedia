@@ -24,11 +24,16 @@ const storage = multer.diskStorage({
   filename: function (req, file, cb) {
     if(file.fieldname==='posts')
     {
-        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9)
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9)
 		const [type, extension] = file.mimetype.split('/')
 		cb(null, type + '-' + req.user.username+'-' + uniqueSuffix+ path.extname(file.originalname))
-    }else{
-
+    }else if(file.fieldname==='stories')
+    {
+      const uniqueSuffix = Date.now()+3600000 + '-' + Math.round(Math.random() * 1e9)
+      const [type, extension] = file.mimetype.split('/')
+      cb(null, file.fieldname + '-' + req.user.username+'-' + uniqueSuffix+ path.extname(file.originalname))
+    }
+    else{
         const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
         cb(
             null,
