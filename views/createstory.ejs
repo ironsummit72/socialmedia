@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Story</title>
+      <link rel="stylesheet" href="/stylesheets/createpost.css">
+</head>
+<body>
+    <form action="/create/story" method="post" enctype="multipart/form-data">
+    <label for="media">Upload a Story:</label>
+    <input type="file" id="media" name="stories" accept="image/*,video/*" onchange="previewMedia()" required>
+    <div id="mediaPreview"></div>
+    <label id="forcaption" for="caption">Caption:</label>
+    <textarea id="caption" name="caption" rows="4" placeholder="What's on your mind, <%=username%>?" required></textarea>
+    <button id="submit" type="submit">Post</button>
+</form>
+<script src="/javascripts/createpost.js"></script>
+</body>
+</html>
