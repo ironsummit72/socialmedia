@@ -27,10 +27,12 @@ import finduserRouter from './routes/findusers.js'
 import exploreRouter from './routes/explore.js'
 import postsRouter from './routes/posts.js'
 import likedPostsRouter from './routes/likedposts.js'
+import storiesRouter from './routes/stories.js'
 import hashTagRouter from './routes/hashtags.js'
 import userModel from './db/models/user.js';
 import flash from 'connect-flash'
 import { verifyPassword } from './utils/hashgen.js'
+import deleteExpiredFiles from './utils/deleteExpiredFiles.js';
 
 dotenv.config()
 let app = express()
@@ -102,6 +104,7 @@ app.use('/explore', exploreRouter)
 app.use('/viewpost', postsRouter)
 app.use('/likedposts', likedPostsRouter)
 app.use('/tags', hashTagRouter)
+app.use('/stories', storiesRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -118,5 +121,11 @@ app.use(function (err, req, res) {
 	res.status(err.status || 500)
 	res.render('error')
 })
+
+// delete the stories which are expired
+setInterval(function () {
+	deleteExpiredFiles()
+},62000)
+
 
 export default app
