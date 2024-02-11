@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stories</title>
+    <link rel="stylesheet" href="/stylesheets/stories.css">
+</head>
+<body>
+<main role="main">
+    <div class="daily-stories">
+        <div class="daily-stories__outer">
+            <div class="daily-stories__container">
+                <%storyData.forEach(function(items){%>
+                    <% let [type,extension]=items.content.mimetype.split('/') %>
+                          <%if(type=='image'){%>
+                            <div class="slide" data-timeout="2000">
+                                <img src="/stories/<%=items.content.filename%>" alt="Image" title="Title 1" />
+                                <p class="caption"><%=items.caption%></p>
+                            </div>
+                          <%}else if(type==='video'){%>
+                            <div class="slide video" data-timeout="6000">
+                                <video src="/stories/<%=items.content.filename%>" preload="true" muted autoplay ></video>
+                                <p class="caption"><%=items.caption%></p>
+                            </div>
+                          <%}%>              
+                <%})%>
+            </div>
+        </div>
+        <div class="progress-bars" data-count="4">
+            <%storyData.forEach(function(items){%>
+                <% let [type,extension]=items.content.mimetype.split('/') %>
+                      <%if(type=='image'){%>
+                        <div class="bar" data-index="0"><span style="animation-duration: 2000ms;"></span></div>
+                      <%}else if(type==='video'){%>
+                        <div class="bar video" data-index="2"><span style="animation-duration: 6000ms"></span></div>
+                      <%}%>               
+            <%})%>
+        </div>
+        <div class="context-menu-container">
+            <a href="#" class="button">
+                <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                    <circle fill="#ffffff" cx="7" cy="16" r="2" />
+                    <circle fill="#ffffff" cx="16" cy="16" r="2" />
+                    <circle fill="#ffffff" cx="25" cy="16" r="2" />
+                </svg>
+            </a>
+            <div class="context-menu">        
+                <a onclick="history.back()" style="cursor: pointer; color:red;"id="c-menu_close" class="link">Close</a>
+                <a href="#" id="c-menu_cancel" class="link">Cancel</a>
+            </div>
+        </div>
+    </div>
+    <span id="prev-slide"></span>
+    <span id="next-slide"></span>
+    <div class="central-area" data-state="playing">
+        <div class="button">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10" fill="none" stroke="#fff" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="2" />
+                <path id="path_play" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
+                    stroke-width="2" d="M10 8l6 4-6 4V8z" />
+                <path id="path_pause" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
+                    stroke-width="2" d="M10 15V9M14 15V9" />
+            </svg>
+        </div>
+    </div>
+</main>
+</body>
+<script src="/javascripts/stories.js"></script>
+</html>
