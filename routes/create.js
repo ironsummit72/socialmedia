@@ -3,12 +3,16 @@ import {Router} from 'express'
 import userModel from '../db/models/user.js'
 import postModel from '../db/models/post.js'
 import tagsModel from '../db/models/tags.js'
+import storyModel from '../db/models/story.js'
 import upload from '../middleware/multer.js'
 const router = Router()
 router.use(isloggedIn)
 
 router.get('/post', function (req, res) {
 	res.render('createpost', { username: req.user.username })
+})
+router.get('/story', function (req, res) {
+	res.render('createstory', { username: req.user.username })
 })
 // _____________________________ post requests____________________
 
@@ -42,6 +46,12 @@ router.post('/post', upload.array('posts', 6),async function (req, res) {
 	}
 })
 
+router.post('/story',upload.single('stories'),async function(req, res){
+const {username}=req.user
+const  userData = await userModel.findOne({ username })
+const storyData=await storyModel.create({user:userData._id,caption:req.body.caption,content:req.file})
+res.send(storyData)
+});
 function isloggedIn(req, res, next) {
 	if (req.user) {
 		next()
