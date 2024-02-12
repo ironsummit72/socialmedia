@@ -14,26 +14,31 @@
                 <%storyData.forEach(function(items){%>
                     <% let [type,extension]=items.content.mimetype.split('/') %>
                           <%if(type=='image'){%>
-                            <div class="slide" data-timeout="2000">
+                            <div class="slide" data-timeout="3000">
                                 <img src="/stories/<%=items.content.filename%>" alt="Image" title="Title 1" />
-                                <p class="caption"><%=items.caption%></p>
+                                <%if(items.caption.length>0){%>
+                                    <p class="caption"><%=items.caption%></p>
+                                    <%}%>
                             </div>
                           <%}else if(type==='video'){%>
-                            <div class="slide video" data-timeout="6000">
+                            <div class="slide video" data-timeout="8000">
                                 <video src="/stories/<%=items.content.filename%>" preload="true" muted autoplay ></video>
-                                <p class="caption"><%=items.caption%></p>
+                                <%if(items.caption.length>0){%>
+                                    <p class="caption"><%=items.caption%></p>
+                                    <%}%>
                             </div>
                           <%}%>              
                 <%})%>
+
             </div>
         </div>
         <div class="progress-bars" data-count="4">
             <%storyData.forEach(function(items){%>
                 <% let [type,extension]=items.content.mimetype.split('/') %>
                       <%if(type=='image'){%>
-                        <div class="bar" data-index="0"><span style="animation-duration: 2000ms;"></span></div>
+                        <div class="bar" data-index="0"><span style="animation-duration: 3000ms;"></span></div>
                       <%}else if(type==='video'){%>
-                        <div class="bar video" data-index="2"><span style="animation-duration: 6000ms"></span></div>
+                        <div class="bar video" data-index="2"><span style="animation-duration: 8000ms"></span></div>
                       <%}%>               
             <%})%>
         </div>
