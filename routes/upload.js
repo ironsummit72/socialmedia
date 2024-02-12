@@ -11,6 +11,7 @@ const baseDir = './uploads'
 const subdirectories = [
 	'displaypicture',
 	'coverpicture',
+	'stories',
 	'posts',
 	'posts/images',
 	'posts/videos',
