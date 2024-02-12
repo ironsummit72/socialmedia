@@ -11,7 +11,6 @@ const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 const CM_container = document.querySelector(".context-menu-container");
 const CM_button = CM_container.querySelector("a.button");
 const cm_link_share = document.querySelector("#c-menu_share");
-const cm_link_copy = document.querySelector("#c-menu_copy");
 const cm_link_cancel = document.querySelector("#c-menu_cancel");
 
 let entryURL;
@@ -415,11 +414,7 @@ CM_button.addEventListener("click", CM_Handle);
 // Dismiss Context Menu
 cm_link_cancel.addEventListener("click", CM_Handle);
 
-// Copy STORIES Link from Context Menu
-cm_link_copy.addEventListener("click", (e) => {
-    e.preventDefault();
-    copyText(e.target);
-});
+
 
 // Handle Progress Bar Click
 bars.forEach((bar) => {
