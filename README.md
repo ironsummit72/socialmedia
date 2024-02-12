@@ -1,5 +1,5 @@
 
-# socialmedia (Node.js application backend)
+# socialmedia (Node.js application (Express) backend)
 
 This app is a mock of social media. which have features like creating an account and uploading photos and videos. also interect with other users. this app uses passport js for authentication. 
 
@@ -29,20 +29,50 @@ This app is a mock of social media. which have features like creating an account
 - Users can upload short-lived stories that can be viewed by their followers.
 - Engage with real-time updates and ephemeral content shared by others.
 
-## Installation of dependencies
+## Installation Guide
+Follow these steps to set up and run the socialmedia  on your local environment:
 
+**Step 1: Clone the Repository**
 
 ```bash
+git clone https://github.com/ironsummit72/socialmedia.git
+```
 
-  cd socialmedia
-  npm install 
+**Step 2: Navigate to the Project Directory**
+
+```bash
+cd socialmedia
 ```
-## Generate the output.css for design (Important)
-To generate the output.css file using the style-related npm scripts, run the following command:
-**Note:** don't skip this step or else the app will look terrible without design.
+**Step 3: Install Dependencies**
+```bash
+npm install
+```
+This command installs all the necessary dependencies for the project.
+
+**Step 4: Copy Environment Variables**
+Copy the environment variables from `example.env` to a new file named `.env` Customize the values in the `.env` file as needed.
+
+```bash
+cp example.env .env
+```
+**Step 5: Build Tailwind CSS**
+
+Generate the Tailwind CSS file by running the following command:
+
 ```bash 
-npm run style 
+npx style
 ```
+This command compiles the Tailwind CSS and creates the output.css file.
+
+**Step 6: Start the Project**
+Start the Social Media Platform by running the following command:
+
+```bash
+npm start
+```
+Visit http://localhost:3000 in your browser to access the platform.
+
+That's it! You've successfully installed and set up the socialmedia express app on your local machine. If you encounter any issues during the installation process, feel free to reach out for assistance. Happy exploring!
 
 ## Usage
 - Sign up for an account or log in if you already have one.
@@ -77,7 +107,7 @@ New Enhancements:
  - Enhance your content discovery experience with a more personalized and relevant feed.
     
 ## Note 
-This Social Media is a hobby project created for learning purposes. The primary goal of this project is to provide a practical hands-on experience for developers to explore and enhance their skills in web development, particularly in building social media applications.
+This Social Media express app is a hobby project created for learning purposes. The primary goal of this project is to provide a practical hands-on experience for developers to explore and enhance their skills in web development, particularly in building social media applications.
 Please keep in mind that this platform is not intended for production use and may have limitations in terms of scalability, security, and robustness. It is encouraged to use this project as a playground for experimentation, learning, and collaboration within the developer community.
 Happy coding!
 
