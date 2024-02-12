@@ -51,6 +51,7 @@ const DBURL=process.env.DB_URL
 const store =  MongoStore.create({
 	mongoUrl: `${DBURL}/${DATABASENAME}`,
 	collectionName:'sessions',
+	ttl:5*24*60*60 // 5 days.
 })
 
 store.on('error', function (err) {
@@ -58,12 +59,12 @@ store.on('error', function (err) {
 })
 app.use(
 	session({
-		secret: 'monza',
+		secret: process.env.SECRET_KEY_SESSION,
 		resave: false,
 		saveUninitialized: false,
 		store: store,
 		cookie: {
-			maxAge: 1000 * 3600,
+			maxAge: 1000 * 3600 * 24 * 5, //5 days
 		},
 	})
 )
