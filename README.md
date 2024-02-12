@@ -60,7 +60,7 @@ cp example.env .env
 Generate the Tailwind CSS file by running the following command:
 
 ```bash 
-npx style
+npm run style
 ```
 This command compiles the Tailwind CSS and creates the output.css file.
 
