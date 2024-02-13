@@ -9,7 +9,7 @@
     <div class="flex flex-col border shadow-md w-full h-[65vh] ">
         <img class="bg-cover bg-no-repeat object-cover object-[top] bg-center h-full" src="<%=coverpicture%>"></img>
         <div class="pmenu-container">
-            <img src="<%=displaypicture%>" alt="" class="profile w-64 h-64 absolute top-[65vh]  left-[10vw] object-fill rounded-full z-10">
+            <img src="<%=displaypicture%>" id="displaypicture" alt="" class="profile w-64 h-64 absolute top-[65vh]  left-[10vw] object-fill rounded-full z-10">
             <div class="pmenu menu">
                 <%if(ownprofile){%>
                     <a href="/create/story">Create Story</a>
@@ -21,7 +21,7 @@
         </div>
         <div class="  w-full h-[35.5vh] p-14 relative right-10  bottom-10 flex flex-col justify-between  ">
             <div class="title flex flex-col justify-between h-20">
-                <h1 class="font-bold text-2xl relative left-20 "><%=firstname%>   <%=lastname%></h1>
+                <h1 id="displayname" class="font-bold text-2xl relative left-20 "><%=firstname%>  <%=lastname%> @<%=username%></h1>
                 <div class="followinfo">
                      <%if(ownprofile){%>
                         <a class="following" href="/following"><span class="relative left-20 font-bold text-red-500 "> <%=following.length%> following</span></a> 
@@ -62,4 +62,5 @@
     </div>
 </body>
 <script src="/javascripts/updateFollow.js"></script>
+<script src="/javascripts/isStoriesAvailable.js"></script>
 </html>

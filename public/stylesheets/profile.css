@@ -504,3 +504,17 @@ hr{
 .pmenu-container:hover .pmenu {
   display: block;
 }
+.gradientborder {
+  border:8px solid transparent;
+  background-image:
+    linear-gradient(#ededed, #d1d1d1),
+    linear-gradient(65deg,
+      #f5d020 0%,
+      #f53803 75%,
+      #218FFA 100%);
+  background-origin:
+    border-box;
+  background-clip:
+    padding-box, border-box;
+  border-radius: 50%;
+}
