@@ -6,7 +6,7 @@ router.get('/', async function (req, res) {
 	const {username} = req.user || {}
 	const userData = await userModel.findOne({username})
 	const {_id} = userData || {}
-	const storyData = await storyModel.find({user: _id})
+	const storyData = await storyModel.find({user: _id}).populate('user')
 	if (storyData.length > 0) {
 		res.render('stories', {storyData})
 	} else {
@@ -17,7 +17,7 @@ router.get('/:username', async function (req, res) {
 	const {username} = req.params
 	const userData = await userModel.findOne({username})
 	const {_id} = userData || {}
-	const storyData = await storyModel.find({user: _id})
+	const storyData = await storyModel.find({user: _id}).populate('user')
 	if (storyData.length > 0) {
 		res.render('stories', {storyData})
 	} else {

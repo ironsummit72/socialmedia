@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stories</title>
     <link rel="stylesheet" href="/stylesheets/stories.css">
+    <link href="/dist/output.css" rel="stylesheet">
 </head>
 <body>
 <main role="main">
@@ -15,6 +16,11 @@
                     <% let [type,extension]=items.content.mimetype.split('/') %>
                           <%if(type=='image'){%>
                             <div class="slide" data-timeout="3000">
+                                <div class="userdetails  absolute top-3  flex flex-row items-center gap-5  w-full h-14 z-10 bg-[#00000022]">
+                                    <div class='relative left-[2%] rounded-full w-[35px] h-[35px]' style='content:url(<%=items.user.displaypicture%>)'></div>
+                                    <p class="username relative text-white font-semibold "><%=items.user.username%></p>
+                                    <p class="time text-white"><%=calculateTimeElapsed(items.createdAt)%></p>
+                                </div>
                                 <img src="/stories/<%=items.content.filename%>" alt="Image" title="Title 1" />
                                 <%if(items.caption.length>0){%>
                                     <p class="caption"><%=items.caption%></p>
@@ -22,6 +28,11 @@
                             </div>
                           <%}else if(type==='video'){%>
                             <div class="slide video" data-timeout="8000">
+                                  <div class="userdetails  absolute top-3  flex flex-row items-center gap-5 w-full h-14 z-10 bg-[#00000022]">
+                                      <div class='relative left-[2%] rounded-full w-[35px] h-[35px]' style='content:url(<%=items.user.displaypicture%>)'></div>
+                                      <p class="username relative text-white font-semibold "><%=items.user.username%></p>
+                                      <p class="time text-white"><%=calculateTimeElapsed(items.createdAt)%></p>
+                                  </div>
                                 <video src="/stories/<%=items.content.filename%>" preload="true" muted autoplay ></video>
                                 <%if(items.caption.length>0){%>
                                     <p class="caption"><%=items.caption%></p>
@@ -70,6 +81,21 @@
             </svg>
         </div>
     </div>
+    <%
+    function calculateTimeElapsed(timestamp) {
+        const currentTime = Date.now();
+        const timeElapsed = currentTime - timestamp;
+        const hours = Math.floor(timeElapsed / (1000 * 60 * 60));
+        const minutes = Math.floor((timeElapsed % (1000 * 60 * 60)) / (1000 * 60));
+      if(hours==0)
+      {
+        return `${minutes}m`;
+      }else{
+        return `${hours}h`;
+      }
+        return `${hours}h`;
+      }
+    %>
 </main>
 </body>
 <script src="/javascripts/stories.js"></script>
