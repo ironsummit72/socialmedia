@@ -505,7 +505,8 @@ hr{
   display: block;
 }
 .gradientborder {
-  border:8px solid transparent;
+  border:6px solid transparent;
+  padding: 2.5px;
   background-image:
     linear-gradient(#ededed, #d1d1d1),
     linear-gradient(65deg,
