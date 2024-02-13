@@ -505,6 +505,7 @@ hr{
   display: block;
 }
 .gradientborder {
+  cursor: pointer;
   border:6px solid transparent;
   padding: 2.5px;
   background-image:
