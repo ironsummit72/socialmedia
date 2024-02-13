@@ -24,4 +24,11 @@ router.get('/:username', async function (req, res) {
 		res.redirect(`../profile/${username}`)
 	}
 });
+router.get('/api/available/:username', async function (req, res) {
+	const {username} = req.params
+	const userData = await userModel.findOne({username})
+	const {_id} = userData || {}
+	const storyData = await storyModel.find({user: _id})
+	res.json(storyData)
+});
 export default router
