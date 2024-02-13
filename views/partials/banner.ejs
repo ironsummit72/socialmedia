@@ -21,7 +21,7 @@
         </div>
         <div class="  w-full h-[35.5vh] p-14 relative right-10  bottom-10 flex flex-col justify-between  ">
             <div class="title flex flex-col justify-between h-20">
-                <h1 id="displayname" class="font-bold text-2xl relative left-20 "><%=firstname%>  <%=lastname%> @<%=username%></h1>
+                <h1 id="displayname" class="font-bold text-2xl relative left-20 "><%=firstname%>  <%=lastname%> <a href="/profile/<%=username%>"><span>@<%=username%></span></a></h1>
                 <div class="followinfo">
                      <%if(ownprofile){%>
                         <a class="following" href="/following"><span class="relative left-20 font-bold text-red-500 "> <%=following.length%> following</span></a> 
