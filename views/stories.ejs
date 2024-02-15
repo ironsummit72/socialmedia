@@ -21,7 +21,7 @@
                                     <p class="username relative text-white font-semibold "><%=items.user.username%></p>
                                     <p class="time text-white"><%=calculateTimeElapsed(items.createdAt)%></p>
                                 </div>
-                                <img src="/stories/<%=items.content.filename%>" alt="Image" title="Title 1" />
+                                <img src="/stories/<%=items.content.filename%>" data-storyid="<%=items._id%>" alt="Image" title="Title 1" />
                                 <%if(items.caption.length>0){%>
                                     <p class="caption"><%=items.caption%></p>
                                     <%}%>
@@ -33,7 +33,7 @@
                                       <p class="username relative text-white font-semibold "><%=items.user.username%></p>
                                       <p class="time text-white"><%=calculateTimeElapsed(items.createdAt)%></p>
                                   </div>
-                                <video src="/stories/<%=items.content.filename%>" preload="true" muted autoplay ></video>
+                                <video src="/stories/<%=items.content.filename%>" data-storyid="<%=items._id%>" preload="true" muted autoplay ></video>
                                 <%if(items.caption.length>0){%>
                                     <p class="caption"><%=items.caption%></p>
                                     <%}%>

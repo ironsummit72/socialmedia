@@ -109,6 +109,7 @@ function setBarActive(i) {
 
 // Set current slide active
 function setActive() {
+    getStoryId()  ///
     if (current_index < total_imgs - 1) {
         // if ain't LAST
         setBarActive(parseInt(current_index, 10) + 1);
@@ -169,7 +170,6 @@ function nextSlide() {
         stopVideo(); // Stop video on current slide if any were playing
 
         current_index++;
-
         move_distance = -(current_index * container_width);
         switchImages(move_distance);
         updateSaveImgSrc();
@@ -376,7 +376,7 @@ function toaster(message, type, timeout = 5000) {
 document.addEventListener("DOMContentLoaded", () => {
     init();
     collections();
-
+    getStoryId()
     setSlideActive(0);
     setBarActive(0);
 
@@ -422,3 +422,22 @@ bars.forEach((bar) => {
         slideTo(bar.getAttribute("data-index"));
     });
 });
+// getting story id Of current Index 
+function getStoryId(){
+    if(isVideo()){
+        const video= imgs[current_index].querySelector("video");
+        const storyID=video.dataset.storyid
+        addViews(storyID);
+    }else{
+        const image= imgs[current_index].querySelector("img");
+        const storyID=image.dataset.storyid
+        addViews(storyID);
+    }
+}
+
+async function addViews(storyId)
+{
+    let response=await fetch(`${window.origin}/addview/stories/${storyId}`,{method:'POST'})
+    let data=await response.json()
+    return data
+}
