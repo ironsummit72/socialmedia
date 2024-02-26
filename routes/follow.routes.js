@@ -1,6 +1,6 @@
 import express,{Router} from 'express'
 
-import {followUnfollowUser} from '../controllers/follow.controllers.js'
+import {followUnfollowUser} from '../controllers/follow.controller.js'
 const router = Router()
 router.use(isloggedIn)
 router.post('/:username',followUnfollowUser)

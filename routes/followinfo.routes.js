@@ -1,6 +1,6 @@
 
 import {Router} from 'express'
-import {showFollowers,showFollowing,showFollowersOfOtherUser,showFollowingOfOtherUser} from '../controllers/follow.controllers.js'
+import {showFollowers,showFollowing,showFollowersOfOtherUser,showFollowingOfOtherUser} from '../controllers/follow.controller.js'
 import isloggedIn from '../middleware/auth.middleware.js'
 const router = Router()
 router.use(isloggedIn)
