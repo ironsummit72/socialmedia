@@ -13,7 +13,6 @@ import dotenv from 'dotenv'
 import LocalStrategy from 'passport-local'
 import MongoStore from 'connect-mongo';
 import indexRouter from './routes/index.routes.js'
-import usersRouter from './routes/users.routes.js'
 import authRouter from './routes/auth.routes.js'
 import uploadRouter from './routes/upload.routes.js'
 import profileRouter from './routes/profile.routes.js'
@@ -94,7 +93,6 @@ app.use('/', indexRouter)
 app.use('/', authRouter)
 app.use('/', followInfoRouter)
 app.use('/', likeRouter)
-app.use('/users', usersRouter)
 app.use('/upload', uploadRouter)
 app.use('/profile',profileRouter)
 app.use('/create',createRouter)
