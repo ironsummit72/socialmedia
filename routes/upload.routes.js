@@ -1,21 +1,12 @@
-import express ,{Router} from 'express'
+import {Router} from 'express'
 const router = Router()
-import userModel from '../db/models/user.model.js'
 import upload from '../middleware/multer.js'
+import isloggedIn from '../middleware/auth.middleware.js'
 import fs from 'fs'
-router.use(isloggedIn)
-
-
+import {uploadCoverPicture, uploadDisplayPicture} from '../controllers/upload.controller.js'
 import path from 'path'
 const baseDir = './uploads'
-const subdirectories = [
-	'displaypicture',
-	'coverpicture',
-	'stories',
-	'posts',
-	'posts/images',
-	'posts/videos',
-]
+const subdirectories = ['displaypicture', 'coverpicture', 'stories', 'posts', 'posts/images', 'posts/videos']
 
 try {
 	// Check if the base directory already exists
@@ -40,52 +31,15 @@ try {
 } catch (err) {
 	console.error(err)
 }
+router.use(isloggedIn)
 router.get('/dp', function (req, res) {
 	res.render('uploadprofile')
 })
 router.get('/cover', function (req, res) {
 	res.render('uploadcover')
 })
+router.post('/dp', upload.single('displaypicture'), uploadDisplayPicture)
 
-router.post('/dp', upload.single('displaypicture'), async function (req, res) {
-	const { path } = req.file
-	const { username } = req.user
-
-	let pattern = /uploads/g
-	let resultString = path.replace(pattern, '')
-	await userModel.updateOne(
-		{ username },
-		{ $set: { displaypicture: resultString } }
-	)
-	res.redirect('/')
-})
-
-router.post('/cover', upload.single('coverpicture'), async function (req, res) {
-	const { path } = req.file
-	const { username } = req.user
-	let pattern = /uploads/g
-	let resultString = path.replace(pattern, '')
-	const { bio } = req.body
-	if (bio === undefined) {
-		let userData = await userModel.updateOne(
-			{ username },
-			{ $set: { coverpicture: resultString } }
-		)
-		res.send(userData)
-	} else {
-		await userModel.updateOne(
-			{ username },
-			{ $set: { coverpicture: resultString, bio: bio } }
-		)
-		res.redirect('/')
-	}
-})
-function isloggedIn(req, res, next) {
-	if (req.user) {
-		next()
-	} else {
-		res.redirect('/login')
-	}
-}
+router.post('/cover', upload.single('coverpicture'),uploadCoverPicture)
 
 export default router
