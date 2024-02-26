@@ -1,56 +1,7 @@
-import express ,{Router} from 'express'
+import {Router} from 'express'
+import {getUsersProfile, searchUser} from '../controllers/user.controller.js'
+import isloggedIn from '../middleware/auth.middleware.js'
 const router = Router()
-import userModel from '../db/models/user.model.js'
-import shuffle from '../utils/shuffle.js'
-
-router.get('/:username', isloggedIn, async function (req, res) {
-	const {username} = req.params
-	let userData = await userModel.findOne({username}).populate('posts').populate('followers')
-	if (userData !== null) {
-		const {firstname, lastname, displaypicture, coverpicture, followers, following, bio, posts} = userData
-		shuffle(posts)
-		let ownProfile = false
-		if (username === req.user.username) {
-			ownProfile = true
-		}
-		const ownerpicture = await loggedInuserDetails(req.user.username)
-		res.render('profile', {
-			username,
-			firstname,
-			lastname,
-			ownprofile: ownProfile,
-			displaypicture,
-			ownerpicture,
-			coverpicture,
-			followers,
-			following,
-			bio,
-			posts,
-			loggedInUser:req.user.username,
-			loggedInUserId:req.user.id,
-		})
-	} else {
-		res.render('nouser', {error: 'user does not exist'})
-	}
-})
-
-router.post('/:search', (req, res) => {
-	const {search} = req.body
-	res.redirect(`/profile/${search}`)
-})
-
-
-async function loggedInuserDetails(username) {
-	let userData = await userModel.findOne({username})
-	const {displaypicture} = userData
-	return displaypicture
-}
-function isloggedIn(req, res, next) {
-	if (req.user) {
-		next()
-	} else {
-		res.redirect('/login')
-	}
-}
-
+router.get('/:username', isloggedIn, getUsersProfile)
+router.post('/:search', searchUser)
 export default router
