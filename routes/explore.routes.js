@@ -1,5 +1,5 @@
 import { Router } from "express";
-import postModel from "../db/models/post.js"
+import postModel from "../db/models/post.model.js"
 import shuffle from "../utils/shuffle.js";
 const router=Router();
 

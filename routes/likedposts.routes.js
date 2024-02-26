@@ -1,5 +1,5 @@
 import {Router} from 'express'
-import userModel from '../db/models/user.js'
+import userModel from '../db/models/user.model.js'
 const router = Router()
 router.get('/', isloggedIn, async function (req, res) {
 	const {id, username} = req.user

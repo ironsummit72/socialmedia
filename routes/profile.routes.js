@@ -1,6 +1,6 @@
 import express ,{Router} from 'express'
 const router = Router()
-import userModel from '../db/models/user.js'
+import userModel from '../db/models/user.model.js'
 import shuffle from '../utils/shuffle.js'
 
 router.get('/:username', isloggedIn, async function (req, res) {

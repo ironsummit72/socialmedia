@@ -1,6 +1,6 @@
 import express ,{Router} from 'express'
 const router = Router()
-import userModel from '../db/models/user.js'
+import userModel from '../db/models/user.model.js'
 import upload from '../middleware/multer.js'
 import fs from 'fs'
 router.use(isloggedIn)

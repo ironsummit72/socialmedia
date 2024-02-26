@@ -1,7 +1,7 @@
 import express,{Router} from 'express'
 let router = Router()
 import { generateHash } from '../utils/hashgen.js'
-import userModel from '../db/models/user.js'
+import userModel from '../db/models/user.model.js'
 import passport from 'passport'
 passport.serializeUser(function (user, cb) {
 	// eslint-disable-next-line no-undef

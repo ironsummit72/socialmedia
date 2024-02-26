@@ -1,6 +1,6 @@
 import {Router} from 'express'
-import storyModel from '../db/models/story.js';
-import userModel from '../db/models/user.js';
+import storyModel from '../db/models/story.model.js';
+import userModel from '../db/models/user.model.js';
 import mongoose from 'mongoose';
 
 // /addview/stories/storyId

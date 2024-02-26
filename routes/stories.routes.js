@@ -1,6 +1,6 @@
 import {Router} from 'express'
-import userModel from '../db/models/user.js'
-import storyModel from '../db/models/story.js'
+import userModel from '../db/models/user.model.js'
+import storyModel from '../db/models/story.model.js'
 const router = Router()
 router.get('/', async function (req, res) {
 	const {username} = req.user || {}

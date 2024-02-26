@@ -1,7 +1,7 @@
 import express ,{Router} from 'express'
 const router = Router()
-import userModel from '../db/models/user.js'
-import postModel from '../db/models/post.js'
+import userModel from '../db/models/user.model.js'
+import postModel from '../db/models/post.model.js'
 import shuffle from '../utils/shuffle.js'
 // handle get requests
 

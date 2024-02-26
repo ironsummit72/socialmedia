@@ -1,5 +1,5 @@
 import {Router} from 'express'
-import postModel from '../db/models/post.js'
+import postModel from '../db/models/post.model.js'
 const router = Router()
 
 router.get('/:postId', isloggedIn, async function (req, res) {

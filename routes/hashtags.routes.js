@@ -1,5 +1,5 @@
 import {Router} from 'express'
-import tagsModel from '../db/models/tags.js'
+import tagsModel from '../db/models/tags.model.js'
 const router = Router()
 router.get('/:tagName', async function (req, res) {
 	const {tagName} = req.params

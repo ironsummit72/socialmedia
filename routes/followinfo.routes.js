@@ -1,6 +1,6 @@
 
 import express ,{Router} from 'express'
-import userModel from '../db/models/user.js'
+import userModel from '../db/models/user.model.js'
 import shuffle from '../utils/shuffle.js'
 const router = Router()
 router.use(isloggedIn)

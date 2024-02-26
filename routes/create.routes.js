@@ -1,9 +1,9 @@
 
 import {Router} from 'express'
-import userModel from '../db/models/user.js'
-import postModel from '../db/models/post.js'
-import tagsModel from '../db/models/tags.js'
-import storyModel from '../db/models/story.js'
+import userModel from '../db/models/user.model.js'
+import postModel from '../db/models/post.model.js'
+import tagsModel from '../db/models/tags.model.js'
+import storyModel from '../db/models/story.model.js'
 import upload from '../middleware/multer.js'
 const router = Router()
 router.use(isloggedIn)
