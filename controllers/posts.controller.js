@@ -4,7 +4,7 @@ async function renderPhotosPageOfLoggedInUser(req, res) {
 	const {username} = req.user
 	const userData = await userModel.findOne({username}).populate('posts')
 	if (userData !== null) {
-		const {firstname, lastname, displaypicture, followers, following, coverpicture, bio, posts} = userData
+		const {firstname, lastname, displaypicture, followers, following, covervideo,coverthumbnail,coverposition, bio, posts} = userData
 		let ownProfile = false
 		if (username === req.user.username) {
 			ownProfile = true
@@ -19,7 +19,9 @@ async function renderPhotosPageOfLoggedInUser(req, res) {
 			ownerpicture,
 			followers,
 			following,
-			coverpicture,
+			covervideo,
+			coverthumbnail,
+			coverposition,
 			bio,
 			posts,
 		})
@@ -32,7 +34,7 @@ async function renderPhotosPageOfUsers(req, res) {
 	const {username} = req.params
 	const userData = await userModel.findOne({username}).populate('posts')
 	if (userData !== null) {
-		const {firstname, lastname, displaypicture, followers, following, coverpicture, bio, posts} = userData
+		const {firstname, lastname, displaypicture, followers, following, covervideo,coverthumbnail, bio, posts} = userData
 		let ownProfile = false
 		if (username === req.user.username) {
 			ownProfile = true
@@ -47,7 +49,9 @@ async function renderPhotosPageOfUsers(req, res) {
 			ownerpicture,
 			followers,
 			following,
-			coverpicture,
+			covervideo,
+			coverthumbnail,
+			coverposition,
 			bio,
 			posts,
 			loggedInUser: req.user.username,
@@ -62,7 +66,7 @@ async function renderReelsPageOfLoggedInUser(req, res) {
 	const {username} = req.user
 	const userData = await userModel.findOne({username}).populate('posts')
 	if (userData !== null) {
-		const {firstname, lastname, displaypicture, followers, following, coverpicture, bio, posts} = userData
+		const {firstname, lastname, displaypicture, followers, following, covervideo,coverthumbnail,coverposition, bio, posts} = userData
 		let ownProfile = false
 		if (username === req.user.username) {
 			ownProfile = true
@@ -77,7 +81,9 @@ async function renderReelsPageOfLoggedInUser(req, res) {
 			ownerpicture,
 			followers,
 			following,
-			coverpicture,
+			covervideo,
+			coverthumbnail,
+			coverposition,
 			bio,
 			posts,
 		})
@@ -89,7 +95,7 @@ async function renderReelsPageOfUsers(req, res) {
 	const {username} = req.params
 	const userData = await userModel.findOne({username}).populate('posts')
 	if (userData !== null) {
-		const {firstname, lastname, displaypicture, followers, following, coverpicture, bio, posts} = userData
+		const {firstname, lastname, displaypicture, followers, following, covervideo,coverthumbnail,coverposition, bio, posts} = userData
 		let ownProfile = false
 		if (username === req.user.username) {
 			ownProfile = true
@@ -104,7 +110,9 @@ async function renderReelsPageOfUsers(req, res) {
 			ownerpicture,
 			followers,
 			following,
-			coverpicture,
+			covervideo,
+			coverthumbnail,
+			coverposition,
 			bio,
 			posts,
 			loggedInUser: req.user.username,

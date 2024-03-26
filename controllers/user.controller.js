@@ -5,7 +5,7 @@ async function getLoggedInUser(req, res) {
 	const {username} = req.user
 	const userData = await userModel.findOne({username}).populate('posts')
 	if (userData !== null) {
-		const {firstname, lastname, displaypicture, followers, following, coverpicture, bio, posts} = userData
+		const {firstname, lastname, displaypicture, followers, following, covervideo,coverthumbnail,coverposition, bio, posts} = userData
 		let ownProfile = false
 		if (username === req.user.username) {
 			ownProfile = true
@@ -20,7 +20,9 @@ async function getLoggedInUser(req, res) {
 			ownerpicture,
 			followers,
 			following,
-			coverpicture,
+			covervideo,
+			coverthumbnail,	
+			coverposition,	
 			bio,
 			posts,
 			loggedInUserId: req.user.id,
@@ -34,7 +36,7 @@ async function getUsersProfile(req, res) {
 	const {username} = req.params
 	let userData = await userModel.findOne({username}).populate('posts').populate('followers')
 	if (userData !== null) {
-		const {firstname, lastname, displaypicture, coverpicture, followers, following, bio, posts} = userData
+		const {firstname, lastname, displaypicture, covervideo,coverthumbnail,coverposition, followers, following, bio, posts} = userData
 		shuffle(posts)
 		let ownProfile = false
 		if (username === req.user.username) {
@@ -48,7 +50,9 @@ async function getUsersProfile(req, res) {
 			ownprofile: ownProfile,
 			displaypicture,
 			ownerpicture,
-			coverpicture,
+			covervideo,
+			coverthumbnail,
+			coverposition,
 			followers,
 			following,
 			bio,

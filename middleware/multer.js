@@ -32,6 +32,12 @@ const storage = multer.diskStorage({
       const uniqueSuffix = Date.now()+86400000 + '-' + Math.round(Math.random() * 1e9)
       const [type, extension] = file.mimetype.split('/')
       cb(null, file.fieldname + '-' + req.user.username+'-' + uniqueSuffix+ path.extname(file.originalname))
+    }else if(file.fieldname==='covervideo'){
+      const [type, extension] = file.mimetype.split('/')
+      cb(null, type + '-' + req.user.username+'-'+ path.extname(file.originalname))
+    }else if(file.fieldname==='coverthumbnail'){
+      const [type, extension] = file.mimetype.split('/')
+      cb(null, type + '-' + req.user.username+'-'+ path.extname(file.originalname))
     }
     else{
         const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);

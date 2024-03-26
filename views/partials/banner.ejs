@@ -6,8 +6,8 @@
     <title>banner</title>
 </head>
 <body>
-    <div class="flex flex-col border shadow-md w-full h-[65vh] ">
-        <img class="bg-cover bg-no-repeat object-cover object-[top] bg-center h-full" src="<%=coverpicture%>"></img>
+    <div class="flex flex-col border shadow-md w-full h-[65vh] z-20">
+        <video id="banner" muted poster="/coverthumbnail/<%=coverthumbnail%>" style="object-position: <%=coverposition%>;" class="z-10 bg-cover bg-no-repeat object-cover object-[center]  h-full rounded-md" src="/covervideo/<%=covervideo%>"></video>
         <div class="pmenu-container">
             <img src="<%=displaypicture%>" id="displaypicture" alt="" class="profile w-64 h-64 absolute top-[65vh]  left-[10vw] object-fill rounded-full z-10">
             <div class="pmenu menu">
@@ -63,4 +63,6 @@
 </body>
 <script src="/javascripts/updateFollow.js"></script>
 <script src="/javascripts/isStoriesAvailable.js"></script>
+<script src="/javascripts/bannerCover.js"></script>
+
 </html>

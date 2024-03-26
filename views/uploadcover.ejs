@@ -9,26 +9,67 @@
 <body>
     <form action="/upload/cover" method="post" enctype="multipart/form-data">
         <div class='lol'>
+          <label for="covervideo">Cover Video</label>
+            <video src="" alt="" poster="" autoplay muted></video>
+            <input id="covervideo" type="file" accept='video/*' value="choose cover video" name="covervideo" onchange="showPreviewVideo()">
+          <label for="coverthumbnail">Cover Thumbnail</label>
             <img src="" alt="">
-            <input type="file" accept='image/*' name="coverpicture" onchange="showImage()">
+            <input id="coverthumbnail" type="file" accept='image/*' value="choose cover video" name="coverthumbnail" onchange="showPreviewThumbnail()">
             <label for="bio">Bio</label>
             <input type="text" name="bio" id="bio">
             <input type="submit" value="upload">
           </div>
         </form>
+        <div class="lol">
+          <label for="coverposition">cover Position</label>
+          <select name="coverposition" id="coverposition" onchange="coverPos()">
+            <option value="top">TOP</option>
+            <option value="center">CENTER</option>
+            <option value="bottom">BOTTOM</option>
+          </select>
+          <button style="background: green; border: none; color:white; padding:10px;border-radius: 5px; cursor: pointer; " id="updateposition">update Position</button>
+        </div>
       
 </body>
 <script>
-    const imageUploader = document.querySelector("input");
-const imagePreview = document.querySelector("img");
+    const videoUploader = document.querySelector("#covervideo");
+const videoPreview = document.querySelector("video");
 
-function showImage() {
+function showPreviewVideo() {
+  let reader = new FileReader();
+ reader.readAsDataURL(videoUploader.files[0]);
+  reader.onload = function(e) {
+    videoPreview.classList.add("show");
+    videoPreview.src = e.target.result;
+  };
+}
+const imageUploader = document.querySelector("#coverthumbnail");
+const imagePreview = document.querySelector("img");
+function showPreviewThumbnail() {
   let reader = new FileReader();
  reader.readAsDataURL(imageUploader.files[0]);
   reader.onload = function(e) {
     imagePreview.classList.add("show");
     imagePreview.src = e.target.result;
   };
+}
+const coverpostion=document.getElementById('coverposition');
+const position=fetch(`${window.origin}/upload/coverpos`,{method:'PATCH'}).then(response=>response.json()).then(data=>{coverpostion.value=data.coverposition;})
+
+
+async function coverPos(val)
+{
+  const coverpostion=document.getElementById('coverposition');
+  const updateposition=document.getElementById('updateposition');
+  console.log(coverpostion.value);
+ const getCoverPositionresp=await 
+
+  updateposition.addEventListener('click',async()=>{
+const response=await fetch(`${window.origin}/upload/coverpos/${coverpostion.value}`,{method:'PATCH'})
+console.log(response);
+  })
+
+
 }
 
 </script>

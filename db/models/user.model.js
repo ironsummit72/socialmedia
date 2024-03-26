@@ -29,9 +29,18 @@ const userSchema = new Schema(
 			type: String,
 			default: '',
 		},
-		coverpicture: {
+		covervideo: {
 			type: String,
 			default: '',
+		},
+		coverthumbnail: {
+			type: String,
+			default: '',
+		},
+		coverposition:{
+			type:String,
+			default:'center',
+			enum:['top','center','bottom']
 		},
 		followers: [
 			{
