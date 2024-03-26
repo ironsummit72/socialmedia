@@ -1,0 +1,10 @@
+node_modules
+/uploads
+output.css
+public/dist/
+tests
+.env
+example.env
+.prettierrc
+README.md
+todo.md

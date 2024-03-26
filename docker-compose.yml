@@ -1,0 +1,18 @@
+version: "3.8"
+services:
+  backend:
+    build: ./
+    container_name: dockersocial
+    ports:
+      - 9002:8080
+    environment:
+      DB_URL: mongodb://database
+      DB_NAME: socialm
+      SECRET_KEY_SESSION: monza 
+      PORT: 8080
+     
+  database:
+    image: mongo:latest
+    container_name: mongodbsocial
+    ports:
+      - 27019:27017
