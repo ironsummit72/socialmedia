@@ -61,7 +61,12 @@ media.addEventListener('change', (event) => {
 			labelCaptions.style.color = 'red'
 			submitButton.disabled = true
 			submitButton.style.backgroundColor = 'red'
-		}
+		}else{
+            labelCaptions.innerText = 'Caption:'
+			labelCaptions.style.color = 'black'
+			submitButton.disabled = false
+			submitButton.style.backgroundColor = 'green'
+        }
 	}
 })
 

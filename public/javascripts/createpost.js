@@ -52,5 +52,26 @@ caption.onchange=function(e){
 	}
 }
 
+const media=document.getElementById('media')
+// media
+media.addEventListener('change', (event) => {
+	const target = event.target
+	if (target.files[0]) {
+		const maxAllowedSize = 1024 * 1024 * 1024
+		if (event.target.files[0].size > maxAllowedSize) {
+			labelCaptions.innerText = 'file is too big! upload under 1GB(1024MB)'
+			labelCaptions.style.color = 'red'
+			submitButton.disabled = true
+			submitButton.style.backgroundColor = 'red'
+		}else{
+			labelCaptions.innerText = 'Caption:'
+			labelCaptions.style.color = 'black'
+			submitButton.disabled = false
+			submitButton.style.backgroundColor = 'green'
+		}
+	}
+})
+
+
 // eslint-disable-next-line no-unused-vars
 
