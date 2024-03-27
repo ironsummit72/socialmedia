@@ -29,6 +29,33 @@ This app is a mock of social media. which have features like creating an account
 - Users can upload short-lived stories that can be viewed by their followers.
 - Engage with real-time updates and ephemeral content shared by others.
 
+## Running with Docker Compose
+This guide provides instructions on how to run a Node.js application using Docker, allowing for easy deployment and management of your application within a containerized environment.
+
+#### Prerequisites
+Before proceeding, ensure you have the following installed on your system ():
+- Docker: [Install Docker](https://docs.docker.com/get-docker/)
+
+### Getting Started
+
+1) **Clone the Repository:** Clone the repository containing your Node.js application to your local machine.
+
+  ```bash
+  git clone https://github.com/ironsummit72/socialmedia.git
+
+  ```
+2) **Navigate to the Application Directory:** Change your current directory to the root directory of your Node.js application.
+  ```bash
+  cd socialmedia
+  ```
+3) **Running the Application:** To start the application using Docker Compose, run the following command:
+  ```bash
+  docker-compose up -d 
+  ```
+This command will build the Docker image (if it hasn't been built already) and start the containers defined in the docker-compose.yml file.
+
+4) **Accessing the Application:** You can now access your Node.js application by navigating to http://localhost:3000 in your web browser.
+
 ## Installation Guide
 Follow these steps to set up and run the socialmedia  on your local environment:
 
