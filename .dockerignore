@@ -8,3 +8,10 @@ example.env
 .prettierrc
 README.md
 todo.md
+.git/
+.gitignore
+.dockerignore
+dockerfile
+docker-compose.yml
+.eslintignore
+.eslintrc.json
