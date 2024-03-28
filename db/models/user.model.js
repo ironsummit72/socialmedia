@@ -1,7 +1,6 @@
-import {Schema,model} from "mongoose"
+import {Schema, model} from 'mongoose'
 
-import connectDB from "../../utils/connectDB.js"
-
+import connectDB from '../../utils/connectDB.js'
 
 connectDB()
 
@@ -37,10 +36,10 @@ const userSchema = new Schema(
 			type: String,
 			default: '',
 		},
-		coverposition:{
-			type:String,
-			default:'center',
-			enum:['top','center','bottom']
+		coverposition: {
+			type: String,
+			default: 'center',
+			enum: ['top', 'center', 'bottom'],
 		},
 		followers: [
 			{
@@ -74,8 +73,10 @@ const userSchema = new Schema(
 				ref: 'posts',
 			},
 		],
-	},{timestamps:true}
+		taggedposts: [{type: Schema.Types.ObjectId, ref: 'posts'}],
+	},
+	{timestamps: true},
 )
-const userModel=model('users', userSchema)
+const userModel = model('users', userSchema)
 // const User =
 export default userModel
