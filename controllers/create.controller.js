@@ -13,10 +13,20 @@ function renderCreateStoryPage(req, res) {
 async function uploadPost(req, res) {
 	const {username} = req.user
 	const {caption} = req.body
-	const tags = caption.split('#').slice(1)
+	const tags =caption.split(" ").filter(word => /^\#/.test(word)).map(name => name.slice(1));
+	const userTags=caption.split(" ").filter(word => /^\@/.test(word)).map(name => name.slice(1));
 	if (!req.file) {
 		let userData = await userModel.findOne({username})
 		let postData = await postModel.create({user: userData._id, caption, contents: req.files})
+		userTags.forEach(async(items)=>{
+			const userDataTag=await userModel.findOne({username:items.trim()})
+			if(userDataTag)
+			{
+				console.log("yes exists user Tag Data",items);
+				userDataTag.taggedposts.push(postData._id)
+				await userDataTag.save()
+			}
+		})
 		userData.posts.push(postData._id)
 		await userData.save()
 		tags.forEach(async (items) => {

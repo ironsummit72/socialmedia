@@ -28,6 +28,7 @@ import postsRouter from './routes/posts.routes.js'
 import likedPostsRouter from './routes/likedposts.routes.js'
 import storiesRouter from './routes/stories.routes.js'
 import hashTagRouter from './routes/hashtags.routes.js'
+import taggedRouter from './routes/tagged.routes.js'
 import addViewsRouter from './api/addViews.js'
 import userModel from './db/models/user.model.js';
 import flash from 'connect-flash'
@@ -106,6 +107,7 @@ app.use('/likedposts', likedPostsRouter)
 app.use('/tags', hashTagRouter)
 app.use('/stories', storiesRouter)
 app.use('/addview', addViewsRouter)
+app.use('/tagged', taggedRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

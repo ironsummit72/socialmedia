@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%=username%>'s Reels</title>
+	<link rel="stylesheet" href="/stylesheets/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Profile</title>
+    <link rel="stylesheet" href="/stylesheets/profile.css">
+	<base href="/">
+</head>
+<body>
+	<header>
+		<%- include('partials/navbar'); -%>
+		<main>
+			<%- include('partials/banner'); -%>
+	</header>
+    <div class="flex justify-center">
+        <div class="postcontent grid grid-cols-3 w-[70%] gap-4 mb-20">
+            <%taggedposts.map((posts)=>{ %>
+                <% let [type,ext]=posts.contents[0].mimetype.split('/')%>
+             <%if(type=='image'){%> 
+                     <!-- <img  src="posts/images/<%=posts.contents[0].filename%>" alt=""> -->
+                    <a href="/viewpost/<%=posts.id%>"><%- include('components/photocards',{items:posts}); -%></a>
+                 <%} else if(type=='video'){%>
+                     <a href="/viewpost/<%=posts.id%>"><%- include('components/reelcard',{items:posts}); -%> </a>   
+             <%}%>
+             <%})%>
+         </div>
+     </div>
+</body>
+</html>
